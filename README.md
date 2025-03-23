@@ -1,93 +1,118 @@
 ## React Components - Documentation
 
-This feature-packed documentation template, built with Next.js, offers a sleek and responsive design, perfect for all your project documentation needs.
- 
+Welcome to the official documentation for `react-components`, a modular and reusable component library built with React. This documentation provides an overview of the available components, installation instructions, usage examples, and customization options.
 
-<br/>
+---
 
-Here are all versions of the React Components - Documentation template, each crafted for specific use cases:
+## Installation
 
-- **Advanced Docs:** A comprehensive template offering extensive features for in-depth documentation needs. Perfect for larger projects that require detailed explanations and advanced configurations.  
-  [Explore the Advanced Docs](https://github.com/elizabthpazp/react-components/tree/master)
+To install `react-components` in your project, use npm:
 
-- **Lite Version:** A streamlined, no-frills template perfect for straightforward documentation needs.  
-  [Explore the Lite Version](https://github.com/elizabthpazp/react-components/tree/minimal-docs)
-
-- **Version with Versioning:** A powerful option for projects that require historical documentation tracking. Manage multiple versions of your docs effortlessly.  
-  [Check out the Versioning Feature](https://github.com/elizabthpazp/react-components/tree/version_docs)
-
-- **i18n Support Version (NEW):** Designed for international audiences, this version will offer comprehensive multilingual support.  
-  [Preview the i18n Support](https://github.com/elizabthpazp/react-components/tree/i18n-support)
-
-### Quick Start
-
-You can create a new React Components - Documentation project using the command:
-
-```plaintext
+```bash
 npm install @elizabthpazp/react-components
 ```
 
-### Expected Output
+Or with yarn:
 
-When you run the CLI, you can expect an output similar to this:
-
+```bash
+yarn add @elizabthpazp/react-components
 ```
-Creating a new React Components - Documentation project in /path/to/your/project from the master branch...
-Cloning Master (Full Documentation)...
-React Components - Documentation project successfully created in /path/to/your/project!
 
-Next steps:
-1. Navigate to your project directory:
-   cd <project-directory>
-2. Install dependencies:
-   // To support React 19, package maintainers will need to test and update their packages to include React 19 as a peer dependency. This is already in progress.
-   npm install --force
-3. Start the development server:
+---
+
+## Components Overview
+
+### Button
+A customizable button component with various styles and interactive states.
+
+```jsx
+import { Button } from '@elizabthpazp/react-components';
+
+<Button onClick={() => alert('Clicked!')}>Click Me</Button>
+```
+
+### Card
+A flexible card component for displaying content in an organized manner.
+
+```jsx
+import { Card } from '@elizabthpazp/react-components';
+
+<Card title="Card Title" description="This is a card description." />
+```
+
+### ButtonCard (Login Modal)
+A button that opens a login modal when clicked.
+
+```jsx
+import { ButtonCard } from '@elizabthpazp/react-components';
+
+<ButtonCard />
+```
+
+---
+
+## Usage
+
+To start using `react-components`, ensure you have React installed in your project. Import the required components and integrate them into your application.
+
+### Example Implementation
+
+```jsx
+import React from 'react';
+import { Button, Card, ButtonCard } from '@elizabthpazp/react-components';
+
+function App() {
+  return (
+    <div>
+      <Button onClick={() => alert('Hello World!')}>Press Me</Button>
+      <Card title="Welcome" description="This is an example card." />
+      <ButtonCard />
+    </div>
+  );
+}
+
+export default App;
+```
+
+---
+
+## Customization
+
+Each component in `react-components` supports various props to allow customization. Refer to the detailed component documentation for specific properties and styling options.
+
+---
+
+## Contributing
+
+If you would like to contribute to `react-components`, please follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/elizabthpazp/react-components.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd react-components
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development environment:
+   ```bash
    npm run dev
-```
+   ```
+5. Create a new branch and make your changes.
+6. Submit a pull request for review.
 
-## Getting Started
+---
 
-First, run the development server:
+## Deployment
 
-```plaintext
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+To deploy your project using `react-components`, you can integrate it with your React application and host it on platforms like Vercel or Netlify.
 
-## Deploy on Vercel
+For Next.js deployments, refer to the official [Next.js deployment documentation](https://nextjs.org/docs/deployment).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/elizabthpazp/react-components)
-
-## Key Features
-
-| **Feature**                   | **Description**                                          |
-|-------------------------------|----------------------------------------------------------|
-| MDX Support                   | Write interactive documentation with MDX.                |
-| Nested Pages                  | Organize content in a nested, hierarchical structure.    |
-| Blog Section                  | Include a dedicated blog section.                        |
-| Table of Contents             | Auto-generated TOC for easy navigation.                  |
-| Pagination                    | Split content across multiple pages.                     |
-| Syntax Highlighting           | Highlight code for better readability.                   |
-| Code Line Highlighting & Titles | Highlight specific lines with descriptive titles.      |
-| Interactive Code Blocks       | Language-specific and interactive code display.          |
-| Custom Components             | Embed custom, reusable components in your docs.          |
-| Light & Dark Mode             | Toggle between light and dark themes.                    |
-| Search Functionality          | Quickly find content with Algolia DocsSearch.             |
-| Code Switcher                 | Switch between code languages or variations.             |
-| Code Copy                     | Copy code blocks with a single click.                    |
-| TOC Observer Highlight        | Highlight active sections in the TOC as you scroll.      |
-| Static Site Generation        | Generate a static, high-performance site.                |
-| SEO-Optimized                 | Structured for optimal search engine indexing.           |
-| Internationalisation (New)     | Added support for i18n for multiple languages |
-
-
+For more details, visit the [GitHub Repository](https://github.com/elizabthpazp/react-components).
