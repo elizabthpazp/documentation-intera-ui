@@ -1,0 +1,41 @@
+---
+title: ButtonCard
+description: This section previews the ButtonCard component.
+---
+
+In this guide, we showcase the `ButtonCard` component, designed to trigger a login modal upon clicking the button. This component provides an elegant and interactive way for users to authenticate.
+
+## Preview
+
+## Code
+
+     ```javascript
+     import "@elizabthpazp/react-components/dist/globals.css";
+     ``` 
+
+     ```javascript
+     import { ButtonCard } from "@elizabthpazp/react-components";
+
+     function App() {
+       return <ButtonCard label="Hello, world!" onClick={() => alert('Hello!')} />;
+     }
+
+     export default App;
+     ```
+
+## Component Details
+
+The `ButtonCard` component consists of:
+- A stylish **Enter** button that, when clicked, displays a login modal.
+- A **modal overlay** that allows users to close the modal by clicking outside it.
+- A **login form** with fields for email and password.
+- Options for **remember me** and **forgot password**.
+- Buttons for **signing in** and **creating an account**.
+
+### Features
+- Uses `useState` to manage modal visibility.
+- Styled with Tailwind CSS for smooth animations and UI consistency.
+- Includes **Lucide icons** for a modern look.
+- Supports user interactions such as closing the modal by clicking outside.
+
+This component enhances user authentication flow by integrating a minimalistic yet engaging login experience.
