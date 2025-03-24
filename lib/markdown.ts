@@ -15,6 +15,7 @@ import { getIconName, hasSupportedExtension } from "./utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Pre from "@/components/markdown/pre";
 import Note from "@/components/markdown/note";
+import CardButton from "@/components/markdown/button-card";
 import { Stepper, StepperItem } from "@/components/markdown/stepper";
 import Image from "@/components/markdown/image";
 import Link from "@/components/markdown/link";
@@ -37,6 +38,7 @@ const components = {
   TabsTrigger,
   pre: Pre,
   Note,
+  CardButton,
   Stepper,
   StepperItem,
   img: Image,

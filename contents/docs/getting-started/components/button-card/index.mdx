@@ -1,5 +1,5 @@
 ---
-title: ButtonCard
+title: ButtonCard (Button with Login Modal)
 description: This section previews the ButtonCard component.
 ---
 
@@ -7,18 +7,8 @@ In this guide, we showcase the `ButtonCard` component, designed to trigger a log
 
 ## Preview
 
-<Note type="note" title="Note">
-  This is a general note to convey information to the user.
-</Note>
-<Note type="danger" title="Danger">
-  This is a danger alert to notify the user of a critical issue.
-</Note>
-<Note type="warning" title="Warning">
-  This is a warning alert for issues that require attention.
-</Note>
-<Note type="success" title="Success">
-  This is a success message to inform the user of successful actions.
-</Note>
+<CardButton> 
+</CardButton> 
 
 ## Code
 
@@ -28,9 +18,15 @@ In this guide, we showcase the `ButtonCard` component, designed to trigger a log
 
      ```javascript
      import { ButtonCard } from "@elizabthpazp/react-components";
-
+     
      function App() {
-       return <ButtonCard label="Hello, world!" onClick={() => alert('Hello!')} />;
+       const [userData, setUserData] = useState(null);
+
+       const handleLogin = (email, password, rememberMe) => {
+        setUserData({ email, password, rememberMe }); 
+       };
+
+       return <ButtonCard title={'Login'} darkMode={true} onLogin={handleLogin}></ButtonCard>;
      }
 
      export default App;
@@ -44,6 +40,31 @@ The `ButtonCard` component consists of:
 - A **login form** with fields for email and password.
 - Options for **remember me** and **forgot password**.
 - Buttons for **signing in** and **creating an account**.
+
+## Props
+
+The `ButtonCard` component accepts several props that allow customization of its behavior and appearance:
+
+| Prop Name         | Type       | Description |
+|------------------|-----------|-------------|
+| `principalButton` | `string`  | Text for the main button that opens the login modal. |
+| `darkMode`       | `boolean` | Enables dark mode styling if `true`. |
+| `title`         | `string`  | Title text displayed in the modal. |
+| `description`   | `string`  | Description or subtitle for the login modal. |
+| `button1`       | `string`  | Text for the primary action button inside the modal (e.g., "Sign In"). |
+| `button2`       | `string`  | Text for the secondary action button (e.g., "Create Account"). |
+| `input1`        | `string`  | Placeholder text for the first input field (e.g., "Email"). |
+| `input2`        | `string`  | Placeholder text for the second input field (e.g., "Password"). |
+| `notShowArrow`  | `boolean` | If `true`, hides the arrow icon in the UI. |
+| `notShowCombobox` | `boolean` | If `true`, hides the combobox selection input. |
+| `notShowForgot` | `boolean` | If `true`, hides the "Forgot Password?" link. |
+| `combobox`      | `string`  | Placeholder or label for the combobox (if visible). |
+| `forgot`        | `string`  | Text for the "Forgot Password?" link. |
+| `hrefLink`      | `string`  | URL to navigate when clicking on a relevant link (e.g., recover password page). |
+| `onLogin`       | `function` | Function triggered when the login button is clicked. |
+| `onSignUp`      | `function` | Function triggered when the sign-up button is clicked. |
+
+These props allow full customization of the component, making it flexible for different UI requirements.
 
 ### Features
 - Uses `useState` to manage modal visibility.
