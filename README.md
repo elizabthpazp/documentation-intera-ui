@@ -20,37 +20,6 @@ yarn add @elizabthpazp/react-components
 
 ---
 
-## Components Overview
-
-### Button
-A customizable button component with various styles and interactive states.
-
-```jsx
-import { Button } from '@elizabthpazp/react-components';
-
-<Button onClick={() => alert('Clicked!')}>Click Me</Button>
-```
-
-### Card
-A flexible card component for displaying content in an organized manner.
-
-```jsx
-import { Card } from '@elizabthpazp/react-components';
-
-<Card title="Card Title" description="This is a card description." />
-```
-
-### ButtonCard (Login Modal)
-A button that opens a login modal when clicked.
-
-```jsx
-import { ButtonCard } from '@elizabthpazp/react-components';
-
-<ButtonCard />
-```
-
----
-
 ## Usage
 
 To start using `react-components`, ensure you have React installed in your project. Import the required components and integrate them into your application.
