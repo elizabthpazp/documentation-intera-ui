@@ -39,6 +39,7 @@ export default function RootLayout({
           type="text/css"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
         />
+        <meta name="algolia-site-verification"  content="F36A2EE6E1869865" />
       </head>
       <body
         className={`${sansFont.variable} ${monoFont.variable} font-regular antialiased tracking-wide`}
