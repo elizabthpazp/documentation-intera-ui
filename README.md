@@ -58,17 +58,18 @@ To start using `react-components`, ensure you have React installed in your proje
 ### Example Implementation
 
 ```jsx
-import React from 'react';
-import { Button, Card, ButtonCard } from '@elizabthpazp/react-components';
+import "@elizabthpazp/react-components/dist/globals.css";
+import { ButtonCard } from '@elizabthpazp/react-components';
+
 
 function App() {
-  return (
-    <div>
-      <Button onClick={() => alert('Hello World!')}>Press Me</Button>
-      <Card title="Welcome" description="This is an example card." />
-      <ButtonCard />
-    </div>
-  );
+  const [userData, setUserData] = useState(null);
+
+  const handleLogin = (email, password, rememberMe) => {
+    setUserData({ email, password, rememberMe }); 
+  };
+
+  return <ButtonCard title={'Login'} darkMode={true} onLogin={handleLogin}></ButtonCard>;
 }
 
 export default App;
