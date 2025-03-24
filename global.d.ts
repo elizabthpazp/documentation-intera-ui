@@ -1,0 +1,1 @@
+declare module '@elizabthpazp/react-components';
