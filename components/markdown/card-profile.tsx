@@ -7,6 +7,6 @@ import { useTheme } from "next-themes";
 export default function ProfileCard() {  
   const { theme } = useTheme();
   return ( 
-    <CardProfile darkMode={theme == 'dark'} image={"https://vcbomutuhqqrhxmoxtbx.supabase.co/storage/v1/object/public/images//image.webp"} />
+    <CardProfile darkMode={theme == 'dark'} image={"https://vcbomutuhqqrhxmoxtbx.supabase.co/storage/v1/object/public/images//react-components.webp"} />
   );
 }

@@ -28,14 +28,14 @@ export default function Home() {
           Get Stared
         </Link>
         <Link
-          href="https://blog.elijs.dev"
+          href="https://github.com/elizabthpazp/react-components"
           className={buttonVariants({
             variant: "secondary",
             className: "px-6",
             size: "lg",
           })}
         >
-          Read Blog
+          Star on GitHub
         </Link>
       </div>
       <span className="sm:flex hidden flex-row items-start sm:gap-2 gap-0.5 text-muted-foreground text-md mt-9 -mb-12 max-[800px]:mb-12 font-code sm:text-base text-sm font-medium border rounded-full p-2.5 px-5 bg-muted/55">
