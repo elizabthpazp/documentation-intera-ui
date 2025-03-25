@@ -29,6 +29,8 @@ export const ROUTES: EachRoute[] = [
         href: "/components",
         items: [
           { title: "ButtonCard", href: "/button-card", tag: "New" }, 
+          { title: "CardProfile", href: "/card-profile", tag: "New" }, 
+          { title: "Activities", href: "/activities", tag: "New" }, 
         ],
       },
       // { title: "Algolia Search", href: "/algolia-search", tag: "New" },

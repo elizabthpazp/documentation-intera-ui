@@ -8,7 +8,8 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "img.freepik.com/**",
       },
-    ],
+    ], 
+    domains: ["vcbomutuhqqrhxmoxtbx.supabase.co"], 
   },
   // if used turbopack
   // transpilePackages: ["next-mdx-remote"],

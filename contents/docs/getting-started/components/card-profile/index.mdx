@@ -1,0 +1,66 @@
+---
+title: CardProfile (Profile Card Component)
+description: This section previews the CardProfile component.
+---
+
+In this guide, we showcase the `CardProfile` component, designed to display a user profile with an image, title, subtitle, description, and two action buttons.
+
+## Preview
+
+<ProfileCard>
+</ProfileCard>
+
+## Code
+
+```javascript
+import "@elizabthpazp/react-components/dist/globals.css";
+```
+
+```javascript
+import CardProfile from "./components/cards/card-profile"; 
+
+export default function Home() {  
+  const handleClick = () => { 
+    console.log("Button Clicked");
+  }; 
+
+  return ( 
+   <CardProfile onClickOne={handleClick} title={Emily Brooks} />   
+  );
+}
+```
+
+## Component Details
+
+The `CardProfile` component consists of:
+- A **profile image** displayed at the top.
+- A **title** representing the name or main heading.
+- A **subtitle** for additional details such as job title or role.
+- A **description** section for a short bio or relevant information.
+- Two **action buttons** that can trigger different events.
+
+## Props
+
+The `CardProfile` component accepts several props that allow customization of its behavior and appearance:
+
+| Prop Name       | Type       | Description |
+|----------------|-----------|-------------|
+| `darkMode`     | `boolean` | Enables dark mode styling if `true`. |
+| `image`        | `string`  | URL for the profile image. |
+| `title`        | `string`  | Main title displayed on the card. |
+| `subtitle`     | `string`  | Subtitle displayed below the title. |
+| `description`  | `string`  | Short description or bio. |
+| `button1Text`  | `string`  | Label for the first action button. |
+| `button2Text`  | `string`  | Label for the second action button. |
+| `onClickOne`   | `function` | Function triggered when the first button is clicked. |
+| `onClickTwo`   | `function` | Function triggered when the second button is clicked. |
+
+These props allow full customization of the component, making it flexible for different UI requirements.
+
+### Features
+- Supports both **light and dark mode**.
+- Uses **Tailwind CSS** for consistent styling.
+- Customizable buttons for different interactions.
+- Responsive design for various screen sizes.
+
+This component enhances user interaction by presenting a clean and interactive profile display.

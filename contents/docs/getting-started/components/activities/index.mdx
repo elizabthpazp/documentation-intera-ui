@@ -1,0 +1,64 @@
+---
+title: Activities (Expandable Activities List)
+description: This section previews the Activities component.
+---
+
+In this guide, we showcase the `Activities` component, designed to display a list of activities, notifications, or any other structured items. Initially, the list is collapsed in an accordion style, expanding when the button is clicked.
+
+## Preview
+
+<ActivitiesC>
+</ActivitiesC>
+
+## Code
+
+```javascript
+import "@elizabthpazp/react-components/dist/globals.css";
+```
+
+```javascript
+import Activities from "./components/activities/activities"; 
+
+export default function Home() {  
+  const activities = [
+    { name: "Work hard", location: "At work", date: "1 April" },
+    { name: "Study English", location: "At school", date: "2 April" },
+    { name: "Make dinner", location: "At home", date: "3 April" },
+  ];
+
+  return ( 
+      <Activities activities={activities} darkMode={true}  />    
+  );
+}
+```
+
+## Component Details
+
+The `Activities` component consists of:
+- A **main button** to expand or collapse the list of activities.
+- A **list of activity cards**, each containing:
+  - A **name** (title of the activity).
+  - A **location** (where the activity takes place).
+  - A **date** (when the activity occurs).
+- **Dark mode support** for styling consistency.
+
+## Props
+
+The `Activities` component accepts several props to allow customization:
+
+| Prop Name      | Type       | Description |
+|---------------|-----------|-------------|
+| `darkMode`    | `boolean` | Enables dark mode styling if `true`. |
+| `activities`  | `array`   | List of activity objects `{ name, location, date }`. |
+| `button1Text` | `string`  | Text for the button when the list is collapsed. |
+| `button2Text` | `string`  | Text for the button when the list is expanded. |
+
+These props enable flexible customization, making the component suitable for different UI cases.
+
+### Features
+- Supports **expand/collapse functionality**.
+- Uses **Tailwind CSS** for styling.
+- Responsive layout for different screen sizes.
+- Can be used for notifications, task tracking, or event listings.
+
+This component enhances user experience by providing a compact yet expandable way to display a list of activities.

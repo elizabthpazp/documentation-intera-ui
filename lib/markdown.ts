@@ -16,6 +16,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Pre from "@/components/markdown/pre";
 import Note from "@/components/markdown/note";
 import CardButton from "@/components/markdown/button-card";
+import ActivitiesC from "@/components/markdown/activities";
+import ProfileCard from "@/components/markdown/card-profile"; 
 import { Stepper, StepperItem } from "@/components/markdown/stepper";
 import Image from "@/components/markdown/image";
 import Link from "@/components/markdown/link";
@@ -39,6 +41,8 @@ const components = {
   pre: Pre,
   Note,
   CardButton,
+  ProfileCard,
+  ActivitiesC,
   Stepper,
   StepperItem,
   img: Image,
