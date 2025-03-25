@@ -12,8 +12,8 @@ importers:
         specifier: ^3.9.0
         version: 3.9.0(@algolia/client-search@5.22.0)(@types/react@18.3.19)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(search-insights@2.17.3)
       '@elizabthpazp/react-components':
-        specifier: ^1.0.19
-        version: 1.0.19
+        specifier: ^1.0.21
+        version: 1.0.21
       '@radix-ui/react-accordion':
         specifier: ^1.2.0
         version: 1.2.3(@types/react-dom@19.0.4(@types/react@18.3.19))(@types/react@18.3.19)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -227,8 +227,8 @@ packages:
       search-insights:
         optional: true
 
-  '@elizabthpazp/react-components@1.0.19':
-    resolution: {integrity: sha512-M2ujZ/bQP6V+Tvlr1MBXxMqr/jFut1kRC92OJu9LNMpr2dHBNEcI0KdZHsZWC0HTwSHWAK80F0tSdJ/zs18Sgg==}
+  '@elizabthpazp/react-components@1.0.21':
+    resolution: {integrity: sha512-w1iSrft58LXjlOZrsJR6Eq34EhjRaWcZBYjQuJlX4FzQFw4X3HCNnvmjn75uTmGP5+b6QuBpUWaNusudU1GR8A==}
 
   '@emnapi/core@1.3.1':
     resolution: {integrity: sha512-pVGjBIt1Y6gg3EJN8jTcfpP/+uuRksIo055oE/OBkDNcjZqVbfkWCksG1Jp4yZnj3iKWyWX8fdG/j6UDYPbFog==}
@@ -3178,7 +3178,7 @@ snapshots:
     transitivePeerDependencies:
       - '@algolia/client-search'
 
-  '@elizabthpazp/react-components@1.0.19':
+  '@elizabthpazp/react-components@1.0.21':
     dependencies:
       framer-motion: 11.18.2(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
       lucide-react: 0.456.0(react@19.0.0-rc-02c0e824-20241028)
