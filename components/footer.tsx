@@ -10,14 +10,14 @@ export function Footer() {
           <CommandIcon className="sm:block hidden w-5 h-5 text-muted-foreground" />
           <p className="text-center">
             Build by{" "}
-            <Link
+            <Link target="_blank"
               className="px-1 underline underline-offset-2"
-              href="https://github.com/elizabthpazp"
+              href="https://elijs.dev"
             >
               elijs.dev
             </Link>
             . The source code is available on{" "}
-            <Link
+            <Link target="_blank"
               className="px-1 underline underline-offset-2"
               href="https://github.com/elizabthpazp/react-components"
             >
@@ -38,7 +38,7 @@ export function Footer() {
 export function FooterButtons() {
   return (
     <> 
-      <Link
+      <Link target="_blank"
         href="https://github.com/sponsors/elizabthpazp"
         className={buttonVariants({ variant: "outline", size: "sm" })}
       >

@@ -27,7 +27,7 @@ export default function Home() {
         >
           Get Stared
         </Link>
-        <Link
+        <Link target="_blank"
           href="https://github.com/elizabthpazp/react-components"
           className={buttonVariants({
             variant: "secondary",
