@@ -75,9 +75,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </ThemeProvider>
-
-        <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-        
+ 
       </body>
     </html>
   );
