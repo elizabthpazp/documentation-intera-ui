@@ -21,10 +21,27 @@ const monoFont = Space_Mono({
 
 export const metadata: Metadata = {
   title: "Free React Components - Documentation",
-  icons:['/logo-intera-ui.jpeg'],
-  metadataBase: new URL("https://elijs.dev"),
+  icons:['logo-intera-ui.jpeg'],
+  assets: ['logo-intera-ui.jpeg'],
+  keywords: ['React', 'Components', 'UI', 'InteraUI', 'intera-ui', 'Interactive', 'Free React Components'],
+  metadataBase: new URL("https://intera-ui.elijs.dev/"),
   description:
     "Interactive / Lightweight / Beautiful components, easy to integrate into your website",
+  creator: 'elijs.dev',
+  openGraph: {
+    type: "website",
+    url: "https://intera-ui.elijs.dev/",
+    title: "Free React Components - Documentation",
+    description: "Interactive / Lightweight / Beautiful components, easy to integrate into your website",
+    siteName: "InteraUI",
+    images: [{ url: "https://intera-ui.elijs.dev/logo-intera-ui.jpeg" }]
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@InteraUI",
+    creator: "@elijs.dev",
+    images: "https://intera-ui.elijs.dev/logo-intera-ui.jpeg"
+  }
 };
 
 export default function RootLayout({
