@@ -5,7 +5,8 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Logo, NavMenu } from "./navbar";
+import { NavMenu } from "./navbar";
+import { Logo } from "./logo";
 import { Button } from "./ui/button";
 import { AlignLeftIcon } from "lucide-react";
 import { FooterButtons } from "./footer";
@@ -38,6 +39,9 @@ export function SheetLeftbar() {
             <Logo />
           </SheetClose>
         </SheetHeader>
+        <div className="logo-menu-mobile ml-4">
+         <Logo />
+        </div> 
         <div className="flex flex-col gap-4 overflow-y-auto">
           <div className="flex flex-col gap-2.5 mt-3 mx-2 px-5">
             <NavMenu isSheet />

@@ -18,7 +18,7 @@ export default function Home() {
       Free React Components for your project
       </h1>
       <p className="mb-8 sm:text-lg max-w-[800px] text-muted-foreground text-left sm:text-center">
-      Lightweight and beautiful components, easy to integrate into your website
+      Interactive / Lightweight / Beautiful components, easy to integrate into your website
       </p>
       <div className="sm:flex sm:flex-row grid grid-cols-2 items-center sm;gap-5 gap-3 mb-8">
         <Link

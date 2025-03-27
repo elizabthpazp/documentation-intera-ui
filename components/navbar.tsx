@@ -1,12 +1,13 @@
 import { ModeToggle } from "@/components/theme-toggle";
-import { GithubIcon, CommandIcon } from "lucide-react";
+import { GithubIcon } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import Anchor from "./anchor";
 import { SheetLeftbar } from "./leftbar";
 import { page_routes } from "@/lib/routes-config";
 import { SheetClose } from "@/components/ui/sheet";
-import AlgoliaSearch from "./algolia-search";
+import AlgoliaSearch from "./algolia-search"; 
+import { Logo } from "./logo";
 
 const NpmIcon = () => (
   <svg className="p-1"
@@ -24,6 +25,14 @@ export const NAVLINKS = [
   {
     title: "Documentation",
     href: `/docs${page_routes[0].href}`,
+  },
+  {
+    title: "Blog",
+    href: `https://blog.elijs.dev/`,
+  },
+  {
+    title: "Contact",
+    href: "mailto:elizabethpazp695@gmail.com" 
   },
   // {
   //   title: "Examples",
@@ -45,7 +54,7 @@ const algolia_props = {
   apiKey: process.env.ALGOLIA_SEARCH_API_KEY!,
 };
 
-export function Navbar() {
+export function Navbar() { 
   return (
     <nav
       className="w-full border-b h-16 sticky top-0 z-50 bg-background"
@@ -56,9 +65,9 @@ export function Navbar() {
           <SheetLeftbar />
           <div className="flex items-center gap-6">
             <div className="sm:flex hidden">
-              <Logo />
+              <Logo />  
             </div>
-            <div className="md:flex hidden items-center gap-4 text-sm font-medium text-muted-foreground">
+            <div className="md:flex hidden items-center gap-6 ml-5 text-sm font-medium text-muted-foreground">
               <NavMenu />
             </div>
           </div>
@@ -97,25 +106,16 @@ export function Navbar() {
   );
 }
 
-export function Logo() {
-  return (
-    <Link href="/" className="flex items-center gap-2.5">
-      <CommandIcon className="w-6 h-6 text-muted-foreground" strokeWidth={2} />
-      <h2 className="text-md font-bold font-code">React Components</h2>
-    </Link>
-  );
-}
-
 export function NavMenu({ isSheet = false }) {
   return (
     <>
-      {NAVLINKS.map((item) => {
+      {NAVLINKS.map((item, index) => {
         const Comp = (
-          <Anchor
+          <Anchor target={index==1 ? '_blank' : ''}
             key={item.title + item.href}
             activeClassName="!text-primary dark:font-medium font-semibold"
             absolute
-            className="flex items-center gap-1 sm:text-base text-[14.5px] dark:text-stone-300/85 text-stone-800"
+            className="flex items-center gap-1 pt-1 sm:text-lg text-[14.5px] dark:text-stone-300/85 text-stone-800"
             href={item.href}
           >
             {item.title}

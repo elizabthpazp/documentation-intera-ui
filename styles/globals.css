@@ -176,3 +176,5 @@ pre>code {
 td>code {
   word-break: keep-all !important;
 }
+
+@media screen and (min-width:640px){.logo-menu-mobile{display:none}} 
