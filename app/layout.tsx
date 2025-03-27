@@ -57,7 +57,7 @@ export default function RootLayout({
           type="text/css"
           href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
         />
-        <meta name="algolia-site-verification"  content="F36A2EE6E1869865" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"/>
       </head>
       <body
         className={`${sansFont.variable} ${monoFont.variable} font-regular antialiased tracking-wide`}
@@ -75,6 +75,9 @@ export default function RootLayout({
           </main>
           <Footer />
         </ThemeProvider>
+
+        <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+        
       </body>
     </html>
   );
