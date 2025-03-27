@@ -1,0 +1,55 @@
+---
+title: TextMasking (Text Masking Component)
+description: This section previews the TextMasking component.
+---
+
+In this guide, we showcase the `TextMasking` component, designed to apply an image background to text using CSS masking techniques.
+
+## Preview
+
+<TextMasking1 />
+
+## Code
+
+```javascript
+import "@elizabthpazp/react-components/dist/globals.css";
+```
+
+```javascript
+import TextMasking from "../components/texts/text-masking";
+
+export default function Home() {
+  return (   
+     <TextMasking 
+       image={'image.png'}
+       title={'Text ♥️ ♥️ Masking'}
+     />  
+  );
+}
+```
+
+## Component Details
+
+The `TextMasking` component consists of:
+- A **text element** where the content is masked using an image.
+- A **customizable background image** applied as a mask.
+- A **CSS-based masking effect** to create a visually appealing text overlay.
+
+## Props
+
+The `TextMasking` component accepts the following props:
+
+| Prop Name | Type     | Description |
+|-----------|---------|-------------|
+| `image`   | `string` | URL of the image used as a mask for the text. |
+| `title`   | `string` | The text content that will have the image background applied. |
+
+These props allow customization of the text and background image, making the component flexible for various design needs.
+
+### Features
+- Uses **CSS masking** for a modern and stylish text effect.
+- Fully **customizable image and text**.
+- Responsive design for different screen sizes.
+- Lightweight and efficient for web applications.
+
+This component enhances UI design by adding a unique visual effect to text elements.

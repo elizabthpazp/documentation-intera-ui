@@ -1,0 +1,64 @@
+---
+title: GiftBox (Gift Box Animation Component)
+description: This section previews the GiftBox component.
+---
+
+In this guide, we showcase the `GiftBox` component, designed to display an interactive gift box that opens on hover or click, revealing a surprise message.
+
+## Preview
+
+<GiftBox1 />
+
+## Code
+
+```javascript
+import "@elizabthpazp/react-components/dist/globals.css";
+```
+
+```javascript
+import GiftBox from "../components/animations/gift-box";
+
+export default function Home() {
+  return (
+    <GiftBox 
+      primaryColor={"#8E44AD"}
+      secondaryColor={"#1F2937"} 
+      message={"ADD YOUR MESSAGE!!"}
+    />
+  );
+}
+```
+
+## Component Details
+
+The `GiftBox` component consists of:
+- A **gift box** that remains closed by default.
+- A **lid animation** that moves up when hovered or clicked.
+- A **message reveal** animation when the box is opened.
+- The box closes when the mouse leaves the component.
+
+## Props
+
+The `GiftBox` component accepts several props for customization:
+
+| Prop Name              | Type       | Description |
+|------------------------|-----------|-------------|
+| `primaryColor`        | `string`  | Defines the main color of the box. |
+| `secondaryColor`      | `string`  | Defines the color of the lid. |
+| `secondaryAccentColor`| `string`  | Additional accent color for details. |
+| `tertiaryColor`       | `string`  | Third color for extra styling. |
+| `accentColor`         | `string`  | Color used for highlights. |
+| `shadowColor`         | `string`  | Defines the shadow color for depth effect. |
+| `textColor`           | `string`  | Color of the message text. |
+| `containerColor`      | `string`  | Background color of the container holding the box. |
+| `message`             | `string`  | The text that appears when the box opens. |
+
+These props allow full customization of the component, making it adaptable for various UI requirements.
+
+### Features
+- Interactive animation using **Framer Motion**.
+- Customizable colors and message.
+- Supports both **hover** and **click** interactions.
+- Responsive design for different screen sizes.
+
+This component enhances user engagement by adding a playful and dynamic animation to the interface.
