@@ -20,10 +20,11 @@ const monoFont = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "React Components - Documentation",
+  title: "Free React Components - Documentation",
+  icons:['/logo-intera-ui.jpeg'],
   metadataBase: new URL("https://elijs.dev"),
   description:
-    "This comprehensive documentation template, crafted with Next.js and available as open-source, delivers a sleek and responsive design, tailored to meet all your project documentation requirements.",
+    "Interactive / Lightweight / Beautiful components, easy to integrate into your website",
 };
 
 export default function RootLayout({
