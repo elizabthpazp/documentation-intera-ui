@@ -1,6 +1,6 @@
 "use client";
-import "@elizabthpazp/react-components/dist/globals.css";
-import { TreeTriangle } from "@elizabthpazp/react-components"; 
+import "@elizabthpazp/intera-ui/dist/globals.css";
+import { TreeTriangle } from "@elizabthpazp/intera-ui"; 
  
 export default function TreeTriangle1() {   
   return ( 

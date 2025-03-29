@@ -1,7 +1,7 @@
 "use client";
 
-import "@elizabthpazp/react-components/dist/globals.css";
-import { Activities } from "@elizabthpazp/react-components";
+import "@elizabthpazp/intera-ui/dist/globals.css";
+import { Activities } from "@elizabthpazp/intera-ui";
 import { useTheme } from "next-themes";
  
 export default function ActivitiesC() {  

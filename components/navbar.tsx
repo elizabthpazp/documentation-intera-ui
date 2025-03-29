@@ -44,7 +44,7 @@ export const NAVLINKS = [
   // },
   // {
   //   title: "Community",
-  //   href: "https://github.com/elizabthpazp/react-components/discussions",
+  //   href: "https://github.com/elizabthpazp/intera-ui/discussions",
   // },
 ];
 
@@ -78,7 +78,7 @@ export function Navbar() {
           <div className="flex items-center justify-between sm:gap-2">
             <div className="flex ml-4 sm:ml-0">
               <Link
-                href="https://github.com/elizabthpazp/react-components"
+                href="https://github.com/elizabthpazp/intera-ui"
                 target="_blank"
                 className={buttonVariants({
                   variant: "ghost",
@@ -88,7 +88,7 @@ export function Navbar() {
                 <GithubIcon className="h-[1.1rem] w-[1.1rem]" />
               </Link>
               <Link
-                href="https://www.npmjs.com/package/@elizabthpazp/react-components"
+                href="https://www.npmjs.com/package/@elizabthpazp/intera-ui"
                 target="_blank"
                 className={buttonVariants({
                   variant: "ghost",

@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="flex sm:min-h-[85.5vh] min-h-[82vh] flex-col sm:items-center justify-center text-center px-2 sm:py-8 py-12">
       <Link
-        href="https://github.com/elizabthpazp/react-components"
+        href="https://github.com/elizabthpazp/intera-ui"
         target="_blank"
         className="mb-5 sm:text-lg flex items-center gap-2 underline underline-offset-4 sm:-mt-12"
       >
@@ -28,7 +28,7 @@ export default function Home() {
           Get Stared
         </Link>
         <Link target="_blank"
-          href="https://github.com/elizabthpazp/react-components"
+          href="https://github.com/elizabthpazp/intera-ui"
           className={buttonVariants({
             variant: "secondary",
             className: "px-6",
@@ -40,7 +40,7 @@ export default function Home() {
       </div>
       <span className="sm:flex hidden flex-row items-start sm:gap-2 gap-0.5 text-muted-foreground text-md mt-9 -mb-12 max-[800px]:mb-12 font-code sm:text-base text-sm font-medium border rounded-full p-2.5 px-5 bg-muted/55">
         <TerminalSquareIcon className="w-5 h-5 sm:mr-1 mt-0.5" />
-        {"npm install @elizabthpazp/react-components"}
+        {"npm install @elizabthpazp/intera-ui"}
       </span>
     </div>
   );

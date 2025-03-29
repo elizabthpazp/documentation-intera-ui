@@ -1,6 +1,6 @@
 "use client";
-import "@elizabthpazp/react-components/dist/globals.css";
-import { TextMasking } from "@elizabthpazp/react-components"; 
+import "@elizabthpazp/intera-ui/dist/globals.css";
+import { TextMasking } from "@elizabthpazp/intera-ui"; 
  
 export default function TextMasking1() {   
   return ( 

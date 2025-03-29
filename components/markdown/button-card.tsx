@@ -1,6 +1,6 @@
 "use client";
-import "@elizabthpazp/react-components/dist/globals.css";
-import { ButtonCard } from "@elizabthpazp/react-components";
+import "@elizabthpazp/intera-ui/dist/globals.css";
+import { ButtonCard } from "@elizabthpazp/intera-ui";
 import { useTheme } from "next-themes";
  
 export default function CardButton() {  

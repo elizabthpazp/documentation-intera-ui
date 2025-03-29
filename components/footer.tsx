@@ -19,7 +19,7 @@ export function Footer() {
             . The source code is available on{" "}
             <Link target="_blank"
               className="px-1 underline underline-offset-2"
-              href="https://github.com/elizabthpazp/react-components"
+              href="https://github.com/elizabthpazp/intera-ui"
             >
               GitHub
             </Link>

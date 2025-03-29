@@ -1,7 +1,7 @@
 "use client";
 
-import "@elizabthpazp/react-components/dist/globals.css";
-import { CatLoader } from "@elizabthpazp/react-components"; 
+import "@elizabthpazp/intera-ui/dist/globals.css";
+import { CatLoader } from "@elizabthpazp/intera-ui"; 
  
 export default function CatLoader1() {   
   return ( 
