@@ -1,4 +1,4 @@
-## React Components - Documentation
+## Documentation for InteraUI library (React Components)
 
 Welcome to the official documentation for `InteraUI`, a modular and reusable component library built with React. This documentation provides an overview of the available components, installation instructions, usage examples, and customization options.
 
