@@ -19,6 +19,7 @@ import CardButton from "@/components/markdown/button-card";
 import ActivitiesC from "@/components/markdown/activities";
 import ProfileCard from "@/components/markdown/card-profile"; 
 import GiftBox1 from "@/components/markdown/gift-box";
+import CatLoader1 from "@/components/markdown/cat-loader";
 import TreeTriangle1 from "@/components/markdown/tree-triangle"; 
 import TextMasking1 from "@/components/markdown/text-masking"; 
 import Tree1 from "@/components/markdown/tree"; 
@@ -48,6 +49,7 @@ const components = {
   ProfileCard,
   ActivitiesC,
   GiftBox1,
+  CatLoader1,
   TextMasking1,
   TreeTriangle1,
   Tree1,

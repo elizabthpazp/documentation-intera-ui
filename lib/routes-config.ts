@@ -31,6 +31,7 @@ export const ROUTES: EachRoute[] = [
           { title: "ButtonCard", href: "/button-card", tag: "New" }, 
           { title: "CardProfile", href: "/card-profile", tag: "New" }, 
           { title: "Activities", href: "/activities", tag: "New" }, 
+          { title: "CatLoader", href: "/cat-loader" }, 
           { title: "GiftBox", href: "/gift-box" }, 
           { title: "TextMasking", href: "/text-masking" }, 
           { title: "Tree", href: "/tree" }, 
