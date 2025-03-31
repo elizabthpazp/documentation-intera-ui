@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { Space_Mono, Space_Grotesk } from "next/font/google";
 import { Footer } from "@/components/footer";
 import "@/styles/globals.css";
+import { Analytics } from "@vercel/analytics/react"
 
 const sansFont = Space_Grotesk({
   subsets: ["latin"],
@@ -75,6 +76,7 @@ export default function RootLayout({
           </main>
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
