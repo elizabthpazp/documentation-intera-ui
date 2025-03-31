@@ -1,6 +1,5 @@
-import Link from "next/link";
-import { buttonVariants } from "./ui/button";
-import { CommandIcon, HeartIcon } from "lucide-react";
+import Link from "next/link"; 
+import { CommandIcon } from "lucide-react";
 import { FooterButtons } from "./footer-buttons";
 
 export function Footer() {
