@@ -75,7 +75,6 @@ export default function RootLayout({
           </main>
           <Footer />
         </ThemeProvider>
- 
       </body>
     </html>
   );

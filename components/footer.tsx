@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import { CommandIcon, HeartIcon } from "lucide-react";
+import { FooterButtons } from "./footer-buttons";
 
 export function Footer() {
   return (
@@ -35,16 +36,4 @@ export function Footer() {
   );
 }
 
-export function FooterButtons() {
-  return (
-    <> 
-      <Link target="_blank"
-        href="https://github.com/sponsors/elizabthpazp"
-        className={buttonVariants({ variant: "outline", size: "sm" })}
-      >
-        <HeartIcon className="h-4 w-4 mr-2 text-red-600 fill-current" />
-        Sponsor
-      </Link>
-    </>
-  );
-}
+
