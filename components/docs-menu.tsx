@@ -2,7 +2,6 @@
 
 import { ROUTES } from "@/lib/routes-config";
 import SubLink from "./sublink";
-import { usePathname } from "next/navigation";
 import { useLanguage } from "@/components/contexts/language-provider";
 
 function translateRouteTitle(href: string, t: any): string | null {
@@ -17,11 +16,7 @@ function translateRouteTitle(href: string, t: any): string | null {
 }
 
 export default function DocsMenu({ isSheet = false }) {
-  const pathname = usePathname();
   const { t, lang } = useLanguage();
-  // after rewrite, pathname is without locale, but we check for /docs
-  const normalized = pathname.replace(/^\/(es|en)/, "") || "/";
-  if (!normalized.startsWith("/docs")) return null;
 
   return (
     <div className="flex flex-col gap-3.5 mt-5 pr-2 pb-6 sm:text-base text-[14.5px]">

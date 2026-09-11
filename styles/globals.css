@@ -177,4 +177,14 @@ td>code {
   word-break: keep-all !important;
 }
 
-@media screen and (min-width:640px){.logo-menu-mobile{display:none}} 
+@media screen and (min-width:640px){.logo-menu-mobile{display:none}}
+
+/* Force docs sidebar to always be visible on desktop, never hidden */
+@media (min-width: 1024px) {
+  .docs-leftbar {
+    display: block !important;
+  }
+  .docs-hamburger {
+    display: none !important;
+  }
+}
