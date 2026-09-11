@@ -4,7 +4,7 @@ export type FileType = {
   type: "file";
   name: string;
   highlight?: boolean;
-  indicator: "add" | "delete";
+  indicator?: "add" | "delete";
 };
 
 export type FileOrFolderType = FolderType | FileType;
@@ -13,7 +13,7 @@ export type FolderType = {
   name: string;
   highlight?: boolean;
   isOpen?: boolean;
-  indicator: "add" | "delete";
+  indicator?: "add" | "delete";
   children?: FileOrFolderType[];
 };
 

@@ -25,7 +25,7 @@ export default function FileSys({
 
   return (
     <div className="dark:bg-stone-950/25 bg-stone-50/25 rounded-md p-4 px-3 border flex flex-col gap-1.5 font-code max-w-full overflow-x-auto">
-      {items.map((f) => {
+      {(items ?? []).map((f) => {
         if (isFile(f)) return <File {...f} key={f.name} />;
         return <Folder {...f} key={f.name} sorted={sorted} />;
       })}
