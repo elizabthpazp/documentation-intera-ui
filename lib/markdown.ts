@@ -23,6 +23,26 @@ import CatLoader1 from "@/components/markdown/cat-loader";
 import TreeTriangle1 from "@/components/markdown/tree-triangle"; 
 import TextMasking1 from "@/components/markdown/text-masking"; 
 import Tree1 from "@/components/markdown/tree"; 
+import BorderImagePreview from "@/components/markdown/border-image";
+import MagneticDockPreview from "@/components/markdown/magnetic-dock";
+import MagneticButtonPreview from "@/components/markdown/magnetic-button";
+import GlassStackPreview from "@/components/markdown/glass-stack";
+import ElasticSliderPreview from "@/components/markdown/elastic-slider";
+import FluidTabsPreview from "@/components/markdown/fluid-tabs";
+import PerspectiveCardPreview from "@/components/markdown/perspective-card";
+import SwipeToConfirmPreview from "@/components/markdown/swipe-to-confirm";
+import MorphingSearchPreview from "@/components/markdown/morphing-search";
+import InteractiveLensPreview from "@/components/markdown/interactive-lens";
+import InteractiveAccordionPreview from "@/components/markdown/interactive-accordion";
+import CommandPalettePreview from "@/components/markdown/command-palette";
+import BottomSheetPreview from "@/components/markdown/bottom-sheet";
+import ImageComparePreview from "@/components/markdown/image-compare";
+import BentoGridPreview from "@/components/markdown/bento-grid";
+import KineticMorphTextPreview from "@/components/markdown/kinetic-morph-text";
+import LiquidProgressPreview from "@/components/markdown/liquid-progress";
+import OrbitalMenuPreview from "@/components/markdown/orbital-menu";
+import SpotlightGridPreview from "@/components/markdown/spotlight-grid";
+import { InstallCommand } from "@/components/install-command";
 import { Stepper, StepperItem } from "@/components/markdown/stepper";
 import Image from "@/components/markdown/image";
 import Link from "@/components/markdown/link";
@@ -53,6 +73,26 @@ const components = {
   TextMasking1,
   TreeTriangle1,
   Tree1,
+  BorderImagePreview,
+  MagneticDockPreview,
+  MagneticButtonPreview,
+  GlassStackPreview,
+  ElasticSliderPreview,
+  FluidTabsPreview,
+  PerspectiveCardPreview,
+  SwipeToConfirmPreview,
+  MorphingSearchPreview,
+  InteractiveLensPreview,
+  InteractiveAccordionPreview,
+  CommandPalettePreview,
+  BottomSheetPreview,
+  ImageComparePreview,
+  BentoGridPreview,
+  KineticMorphTextPreview,
+  LiquidProgressPreview,
+  OrbitalMenuPreview,
+  SpotlightGridPreview,
+  InstallCommand,
   Stepper,
   StepperItem,
   img: Image,
@@ -97,19 +137,36 @@ export type BaseMdxFrontmatter = {
   description: string;
 };
 
-export async function getDocsForSlug(slug: string) {
-  try {
-    const contentPath = getDocsContentPath(slug);
-    const rawMdx = await fs.readFile(contentPath, "utf-8");
-    return await parseMdx<BaseMdxFrontmatter>(rawMdx);
-  } catch (err) {
-    console.log(err);
+export async function getDocsForSlug(slug: string, lang: string = "es") {
+  const normalizedLang = lang === "en" ? "en" : "es";
+  const tryPaths = [
+    getDocsContentPath(slug, normalizedLang),
+    getDocsContentPath(slug, "es"),
+    getDocsContentPathFallback(slug),
+  ];
+  for (const p of tryPaths) {
+    try {
+      const rawMdx = await fs.readFile(p, "utf-8");
+      return await parseMdx<BaseMdxFrontmatter>(rawMdx);
+    } catch {}
   }
+  console.log(`getDocsForSlug not found: ${slug} lang=${lang}`);
 }
 
-export async function getDocsTocs(slug: string) {
-  const contentPath = getDocsContentPath(slug);
-  const rawMdx = await fs.readFile(contentPath, "utf-8");
+export async function getDocsForSlugWithLang(slug: string, lang: string) {
+  return getDocsForSlug(slug, lang);
+}
+
+export async function getDocsTocs(slug: string, lang: string = "es") {
+  const normalizedLang = lang === "en" ? "en" : "es";
+  let rawMdx: string | null = null;
+  for (const p of [getDocsContentPath(slug, normalizedLang), getDocsContentPath(slug, "es"), getDocsContentPathFallback(slug)]) {
+    try {
+      rawMdx = await fs.readFile(p, "utf-8");
+      break;
+    } catch {}
+  }
+  if (!rawMdx) rawMdx = await fs.readFile(getDocsContentPath(slug, "es"), "utf-8");
   // captures between ## - #### can modify accordingly
   const headingsRegex = /^(#{2,4})\s(.+)$/gm;
   let match;
@@ -140,7 +197,17 @@ function sluggify(text: string) {
   return slug.replace(/[^a-z0-9-]/g, "");
 }
 
-function getDocsContentPath(slug: string) {
+function getDocsContentPath(slug: string, lang: string = "es") {
+  // lang es|en -> contents/docs/es or contents/docs/en, fallback to contents/docs for backwards compat
+  const langPath = path.join(process.cwd(), `/contents/docs/${lang}/${slug}/index.mdx`);
+  // check if lang is es/en and file exists will be handled by caller try/catch
+  // for default es, also try without lang prefix if not found (original location)
+  // we return langPath first; caller will fallback if needed
+  // To keep static generation working, we try langPath; if lang==es and file not in es folder but in base, fallback will handle
+  return langPath;
+}
+
+function getDocsContentPathFallback(slug: string) {
   return path.join(process.cwd(), "/contents/docs/", `${slug}/index.mdx`);
 }
 
@@ -148,7 +215,8 @@ function justGetFrontmatterFromMD<Frontmatter>(rawMd: string): Frontmatter {
   return matter(rawMd).data as Frontmatter;
 }
 
-export async function getAllChilds(pathString: string) {
+export async function getAllChilds(pathString: string, lang: string = "es") {
+  const normalizedLang = lang === "en" ? "en" : "es";
   const items = pathString.split("/").filter((it) => it != "");
   let page_routes_copy = ROUTES;
 
@@ -163,17 +231,19 @@ export async function getAllChilds(pathString: string) {
 
   return await Promise.all(
     page_routes_copy.map(async (it) => {
-      const totalPath = path.join(
-        process.cwd(),
-        "/contents/docs/",
-        prevHref,
-        it.href,
-        "index.mdx",
-      );
-      const raw = await fs.readFile(totalPath, "utf-8");
+      const tryPaths = [
+        path.join(process.cwd(), `/contents/docs/${normalizedLang}`, prevHref, it.href, "index.mdx"),
+        path.join(process.cwd(), `/contents/docs/es`, prevHref, it.href, "index.mdx"),
+        path.join(process.cwd(), "/contents/docs/", prevHref, it.href, "index.mdx"),
+      ];
+      let raw: string | null = null;
+      for (const p of tryPaths) {
+        try { raw = await fs.readFile(p, "utf-8"); break; } catch {}
+      }
+      if (!raw) raw = await fs.readFile(tryPaths[0], "utf-8");
       return {
-        ...justGetFrontmatterFromMD<BaseMdxFrontmatter>(raw),
-        href: `/docs${prevHref}${it.href}`,
+        ...justGetFrontmatterFromMD<BaseMdxFrontmatter>(raw!),
+        href: `/${normalizedLang}/docs${prevHref}${it.href}`,
       };
     }),
   );

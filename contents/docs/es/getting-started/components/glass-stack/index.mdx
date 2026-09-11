@@ -1,0 +1,53 @@
+---
+title: GlassStack (Pila con Efecto Cristal 3D)
+description: Esta sección muestra una vista previa del componente GlassStack.
+---
+
+En esta guía presentamos el componente `GlassStack`, una pila de tarjetas 3D con efecto glassmorphism — haz clic para rotar.
+
+## Vista Previa
+
+<GlassStackPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { GlassStack } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  const items = [
+    { title: "Interacción Dinámica", content: "Física fluida..." },
+    { title: "Estética Moderna", content: "Glassmorphism..." },
+    { title: "Customizable", content: "Control total..." },
+  ];
+
+  return <GlassStack items={items} darkMode className="h-[500px]" />;
+}
+```
+
+## Detalles del Componente
+
+El componente `GlassStack` consta de:
+- Una **pila de tarjetas** con `backdrop-blur-xl` y profundidad mediante `scale`/`y`/`z`.
+- **AnimatePresence** para entrada/salida con resorte (spring).
+- Haz clic en cualquier tarjeta o en la pila para **rotar** a la siguiente tarjeta.
+
+## Propiedades
+
+| Nombre de Prop | Tipo                        | Por Defecto | Descripción |
+|-------------|-----------------------------|---------|-------------|
+| `items`     | `Array<{title, content}>`   | `[]`    | Tarjetas a mostrar. |
+| `darkMode`  | `boolean`                   | `false` | Activa el estilo en modo oscuro si es `true`. |
+| `className` | `string`                    | `""`    | Clases adicionales combinadas vía `cn()`. |
+| `style`     | `CSSProperties`             | `-`     | Estilos en línea. |
+
+### Características
+
+- Transformaciones 3D con `preserve-3d` y `perspective-1000`.
+- Responsivo `h-[320px] sm:h-[400px]` con `w-56 sm:w-64`.
+- Estilizado con **Tailwind CSS** + **Framer Motion**.
+- Ubicación: `src/components/interactive/GlassStack.jsx`.

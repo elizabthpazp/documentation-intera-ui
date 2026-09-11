@@ -1,0 +1,48 @@
+---
+title: MorphingSearch (Búsqueda Expansible)
+description: Esta sección muestra una vista previa del componente MorphingSearch.
+---
+
+En esta guía presentamos el componente `MorphingSearch`, un icono que se expande a un campo de entrada con animación de resorte.
+
+## Vista Previa
+
+<MorphingSearchPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { MorphingSearch } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return <MorphingSearch placeholder="Buscar..." onSearch={(v)=> filter(v)} darkMode className="mx-auto" />;
+}
+```
+
+## Detalles del Componente
+
+El componente `MorphingSearch` consta de:
+- Un **botón circular** (`48px`) con icono de búsqueda.
+- Se **expande** a `min(300px,90vw)` con resorte (`stiffness:400, damping:30`).
+- **Campo de entrada** con `AnimatePresence` y botón de limpiar (`X`), `Enter` activa `onSearch`.
+
+## Propiedades
+
+| Nombre de Prop | Tipo       | Por Defecto            | Descripción |
+|---------------|------------|--------------------------|-------------|
+| `placeholder` | `string`   | `"Search anything..."`   | Texto de marcador cuando está expandido. |
+| `onSearch`    | `function` | `(value)=>{}`            | Se ejecuta al pulsar Enter o con el valor actual. |
+| `darkMode`    | `boolean`  | `false`                  | Activa el estilo en modo oscuro si es `true`. |
+| `className`   | `string`   | `""`                     | Clases adicionales combinadas vía `cn()`. |
+| `style`       | `CSSProperties` | `-`                 | Estilos en línea. |
+
+### Características
+
+- Transformación con resorte vía **Framer Motion** `layout`.
+- Responsivo `max-w-[90vw]` con `h-12`.
+- Iconos `Search`/`X` de Lucide.
+- Ubicación: `src/components/interactive/MorphingSearch.jsx`.

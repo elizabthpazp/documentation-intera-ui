@@ -1,0 +1,55 @@
+---
+title: LiquidProgress (Liquid Orb Progress)
+description: This section previews the LiquidProgress component.
+---
+
+In this guide, we showcase the `LiquidProgress` component, a liquid orb with vertical drag to change value.
+
+## Preview
+
+<LiquidProgressPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { LiquidProgress } from "@elizabthpazp/intera-ui";
+import { useState } from "react";
+
+export default function Home() {
+  const [val, setVal] = useState(64);
+  return <LiquidProgress value={val} onChange={setVal} size={160} label="Upload" darkMode interactive />;
+}
+// Click o drag vertical dentro del orb, ArrowUp/Down (+-5), touchAction none + overscroll-contain
+```
+
+## Component Details
+
+The `LiquidProgress` component consists of:
+- **Orb** (`border-radius:50%`) with `overflow-hidden` and liquid wave (`motion.div` y).
+- **Value** `0-100` controlling wave height + `text-3xl`.
+- **Interaction**: click/drag vertical + `ArrowUp/Down` (±5) + `touchAction: none`.
+
+## Props
+
+| Prop Name     | Type       | Default    | Description |
+|---------------|------------|------------|-------------|
+| `value`       | `number`   | `60` (0-100) | Progress value. |
+| `size`        | `number`   | `160`      | Diameter in px (`min(160px,70vw)` responsive). |
+| `label`       | `string`   | `"Progress"` | Label below orb. |
+| `interactive` | `boolean`  | `true`     | Enables drag/click if `true`. |
+| `onChange`    | `function` | `(v)=>{}`  | Called with new value. |
+| `darkMode`    | `boolean`  | `false`    | Enables dark mode styling if `true`. |
+| `className`   | `string`   | `""`       | Additional classes merged via `cn()`. |
+| `style`       | `CSSProperties` | `-`   | Inline styles. |
+
+Responsive: `width: min(160px,70vw)`, `text-2xl sm:text-3xl`, sin pop (`span` estático, no `key={pct}`).
+
+### Features
+- Liquid wave via **Framer Motion** `motion.div` with `y` transform.
+- `overscroll-contain` + `touchAction: none` for smooth mobile drag.
+- Customizable via `className`/`style`.
+- Location: `src/components/interactive/LiquidProgress.jsx`.

@@ -1,0 +1,75 @@
+---
+title: ButtonCard (Button with Login Modal)
+description: This section previews the ButtonCard component.
+---
+
+In this guide, we showcase the `ButtonCard` component, designed to trigger a login modal upon clicking the button. This component provides an elegant and interactive way for users to authenticate.
+
+## Preview
+
+<CardButton> 
+</CardButton> 
+
+## Code
+
+     ```javascript
+     import "@elizabthpazp/intera-ui/dist/globals.css";
+     ``` 
+
+     ```javascript
+     import { ButtonCard } from "@elizabthpazp/intera-ui";
+     
+     function App() {
+       const [userData, setUserData] = useState(null);
+
+       const handleLogin = (email, password, rememberMe) => {
+        setUserData({ email, password, rememberMe }); 
+       };
+
+       return <ButtonCard title={'Login'} darkMode={true} onLogin={handleLogin}></ButtonCard>;
+     }
+
+     export default App;
+     ```
+
+## Component Details
+
+The `ButtonCard` component consists of:
+- A stylish **Enter** button that, when clicked, displays a login modal.
+- A **modal overlay** that allows users to close the modal by clicking outside it.
+- A **login form** with fields for email and password.
+- Options for **remember me** and **forgot password**.
+- Buttons for **signing in** and **creating an account**.
+
+## Props
+
+The `ButtonCard` component accepts several props that allow customization of its behavior and appearance:
+
+| Prop Name         | Type       | Description |
+|------------------|-----------|-------------|
+| `principalButton` | `string`  | Text for the main button that opens the login modal. |
+| `darkMode`       | `boolean` | Enables dark mode styling if `true`. |
+| `title`         | `string`  | Title text displayed in the modal. |
+| `description`   | `string`  | Description or subtitle for the login modal. |
+| `primaryButton`       | `string`  | Text for the primary action button inside the modal (e.g., "Sign In"). |
+| `secondaryButton`       | `string`  | Text for the secondary action button (e.g., "Create Account"). |
+| `emailPlaceholder`        | `string`  | Placeholder text for the first input field (e.g., "Email"). |
+| `passwordPlaceholder`        | `string`  | Placeholder text for the second input field (e.g., "Password"). |
+| `notShowArrow`  | `boolean` | If `true`, hides the arrow icon in the UI. |
+| `notShowCombobox` | `boolean` | If `true`, hides the combobox selection input. |
+| `notShowForgot` | `boolean` | If `true`, hides the "Forgot Password?" link. |
+| `combobox`      | `string`  | Placeholder or label for the combobox (if visible). |
+| `forgot`        | `string`  | Text for the "Forgot Password?" link. |
+| `forgotLink`      | `string`  | URL to navigate when clicking on a relevant link (e.g., recover password page). |
+| `onLogin`       | `function` | Function triggered when the login button is clicked. |
+| `onSignUp`      | `function` | Function triggered when the sign-up button is clicked. |
+
+These props allow full customization of the component, making it flexible for different UI requirements.
+
+### Features
+- Uses `useState` to manage modal visibility.
+- Styled with Tailwind CSS for smooth animations and UI consistency.
+- Includes **Lucide icons** for a modern look.
+- Supports user interactions such as closing the modal by clicking outside.
+
+This component enhances user authentication flow by integrating a minimalistic yet engaging login experience.

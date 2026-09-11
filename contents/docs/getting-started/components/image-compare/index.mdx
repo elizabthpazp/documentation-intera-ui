@@ -1,0 +1,63 @@
+---
+title: ImageCompare (Before/After Slider)
+description: This section previews the ImageCompare component.
+---
+
+In this guide, we showcase the `ImageCompare` component, a before/after slider with draggable divider and `clip-path`.
+
+## Preview
+
+<ImageComparePreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { ImageCompare } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <ImageCompare
+      before="https://picsum.photos/seed/before/800/500"
+      after="https://picsum.photos/seed/after/800/500"
+      beforeLabel="Before" afterLabel="After"
+      defaultPosition={50}
+      darkMode
+      className="max-w-2xl mx-auto"
+    />
+  );
+}
+// Drag en handle o click en cualquier punto + teclado ArrowLeft/Right (5%)
+// Usa clipPath inset(0 ${100-pos}% 0 0) -> imagen siempre full size
+```
+
+## Component Details
+
+The `ImageCompare` component consists of:
+- **After image** full size as base.
+- **Before image** clipped with `clipPath: inset(0 ${100-pos}% 0 0)`.
+- **Divider** + **handle** draggable with `pointer` events and keyboard support.
+
+## Props
+
+| Prop Name         | Type     | Default                         | Description |
+|-------------------|----------|---------------------------------|-------------|
+| `before`          | `string` | `picsum/seed/before`            | Before image URL. |
+| `after`           | `string` | `picsum/seed/after`             | After image URL. |
+| `beforeLabel`     | `string` | `"Before"`                      | Label for before. |
+| `afterLabel`      | `string` | `"After"`                       | Label for after. |
+| `defaultPosition` | `number` | `50` (0-100)                    | Initial divider position %. |
+| `darkMode`        | `boolean`| `false`                         | Enables dark mode styling if `true`. |
+| `className`       | `string` | `""`                            | Additional classes merged via `cn()`. |
+| `style`           | `CSSProperties` | `-`                      | Inline styles. |
+
+Responsive: `aspect-[16/10] w-full`, `touch-none`, `clipPath %`.
+
+### Features
+- Drag on handle or **click anywhere** + **ArrowLeft/Right** (5%).
+- No distortion — image always full size via clip.
+- Customizable via `className`/`style`.
+- Location: `src/components/interactive/ImageCompare.jsx`.

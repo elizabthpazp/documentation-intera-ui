@@ -1,0 +1,53 @@
+---
+title: PerspectiveCard (3D Tilt Card)
+description: This section previews the PerspectiveCard component.
+---
+
+In this guide, we showcase the `PerspectiveCard` component, a 3D card that tilts with mouse movement using `preserve-3d`.
+
+## Preview
+
+<PerspectiveCardPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { PerspectiveCard } from "@elizabthpazp/intera-ui";
+import { Rocket } from "lucide-react";
+
+export default function Home() {
+  return (
+    <PerspectiveCard darkMode className="w-80 h-[420px]">
+      <Rocket size={48}/>
+      <h3 className="font-black">3D PERSPECTIVE</h3>
+      <p className="text-xs opacity-50">Hover para profundidad</p>
+    </PerspectiveCard>
+  );
+}
+```
+
+## Component Details
+
+The `PerspectiveCard` component consists of:
+- A **card** that rotates on `rotateX`/`rotateY` via `useMotionValue` + `useSpring`.
+- **3D depth** with `transformStyle: "preserve-3d"` and inner glow.
+- Resets on `mouseLeave`.
+
+## Props
+
+| Prop Name   | Type            | Default | Description |
+|-------------|-----------------|---------|-------------|
+| `children`  | `ReactNode`     | `-`     | Content inside the card. |
+| `darkMode`  | `boolean`       | `false` | Enables dark mode styling if `true`. |
+| `className` | `string`        | `""`    | Additional classes merged via `cn()`. |
+| `style`     | `CSSProperties` | `-`     | Inline styles (merged with 3D transforms). |
+
+### Features
+- Smooth 3D tilt with **Framer Motion** `useTransform` (`±17.5deg`).
+- Responsive `w-64 h-80 sm:h-96 max-w-[90vw]` with `rounded-3xl`.
+- Customizable via `className`/`style`.
+- Location: `src/components/interactive/PerspectiveCard.jsx`.

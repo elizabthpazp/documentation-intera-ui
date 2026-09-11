@@ -10,32 +10,51 @@ export type EachRoute = {
 
 export const ROUTES: EachRoute[] = [
   {
-    title: "Getting Started",
+    title: "Primeros Pasos",
     href: "/getting-started",
     noLink: true,
     items: [
-      { title: "Introduction", href: "/introduction" },
+      { title: "Introducción", href: "/introduction" },
       {
-        title: "Installation",
+        title: "Instalación",
         href: "/installation",
       },
-      { title: "Quick Start Guide", href: "/quick-start-guide" },
+      { title: "Guía Rápida", href: "/quick-start-guide" },
       {
-        title: "Project Structure",
+        title: "Estructura del Proyecto",
         href: "/project-structure",
       },
       {
-        title: "Components",
+        title: "Componentes",
         href: "/components",
         items: [
-          { title: "ButtonCard", href: "/button-card", tag: "New" }, 
-          { title: "CardProfile", href: "/card-profile", tag: "New" }, 
-          { title: "Activities", href: "/activities", tag: "New" }, 
-          { title: "CatLoader", href: "/cat-loader" }, 
-          { title: "GiftBox", href: "/gift-box" }, 
-          { title: "TextMasking", href: "/text-masking" }, 
-          { title: "Tree", href: "/tree" },  
-          { title: "TreeTriangle", href: "/tree-triangle" },  
+          { title: "MagneticDock", href: "/magnetic-dock", tag: "New" },
+          { title: "CommandPalette", href: "/command-palette", tag: "New" },
+          { title: "ButtonCard", href: "/button-card", tag: "New" },
+          { title: "Activities", href: "/activities", tag: "New" },
+          { title: "OrbitalMenu", href: "/orbital-menu", tag: "New" },
+          { title: "MorphingSearch", href: "/morphing-search" },
+          { title: "GlassStack", href: "/glass-stack" },
+          { title: "FluidTabs", href: "/fluid-tabs" },
+          { title: "SwipeToConfirm", href: "/swipe-to-confirm" },
+          { title: "InteractiveAccordion", href: "/interactive-accordion" },
+          { title: "InteractiveLens", href: "/interactive-lens" },
+          { title: "BentoGrid", href: "/bento-grid" },
+          { title: "ImageCompare", href: "/image-compare" },
+          { title: "ElasticSlider", href: "/elastic-slider" },
+          { title: "PerspectiveCard", href: "/perspective-card" },
+          { title: "BottomSheet", href: "/bottom-sheet" },
+          { title: "KineticMorphText", href: "/kinetic-morph-text" },
+          { title: "LiquidProgress", href: "/liquid-progress" },
+          { title: "MagneticButton", href: "/magnetic-button" },
+          { title: "SpotlightGrid", href: "/spotlight-grid" },
+          { title: "CardProfile", href: "/card-profile" },
+          { title: "CatLoader", href: "/cat-loader" },
+          { title: "GiftBox", href: "/gift-box" },
+          { title: "TextMasking", href: "/text-masking" },
+          { title: "Tree", href: "/tree" },
+          { title: "TreeTriangle", href: "/tree-triangle" },
+          { title: "BorderImage", href: "/border-image" },
         ],
       }, 
       // {
@@ -61,3 +80,11 @@ function getRecurrsiveAllLinks(node: EachRoute) {
 }
 
 export const page_routes = ROUTES.map((it) => getRecurrsiveAllLinks(it)).flat();
+
+export function getPreviousNext(path: string) {
+  const index = page_routes.findIndex(({ href }) => href == `/${path}`);
+  return {
+    prev: page_routes[index - 1],
+    next: page_routes[index + 1],
+  };
+}

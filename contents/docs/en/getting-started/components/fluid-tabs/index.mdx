@@ -1,0 +1,68 @@
+---
+title: FluidTabs (Morphing Indicator Tabs)
+description: This section previews the FluidTabs component.
+---
+
+In this guide, we showcase the `FluidTabs` component, tabs with a morphing indicator using `layoutId`.
+
+## Preview
+
+<FluidTabsPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { FluidTabs } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  const [tabs, setTabs] = useState([
+    {id:"design", label:"Design"},
+    {id:"code", label:"Code"},
+    {id:"ship", label:"Ship"},
+    {id:"analytics", label:"Analytics"},
+    {id:"growth", label:"Growth"},
+  ]);
+  const [tab, setTab] = useState("design");
+
+  // Añadir más tabs dinámicamente
+  const addTab = () => setTabs([...tabs, { id: `tab-${tabs.length}`, label: `Tab ${tabs.length + 1}` }]);
+
+  return (
+    <>
+      <FluidTabs tabs={tabs} activeTab={tab} onChange={setTab} darkMode />
+      <button onClick={addTab}>+ Add Tab</button>
+    </>
+  );
+}
+```
+
+## Component Details
+
+The `FluidTabs` component consists of:
+- A **pill container** with border and `overflow-x-auto`.
+- **Active indicator** with `layoutId="fluid-indicator"` spring (`bounce:0.25, stiffness:130`).
+- **Hover indicator** with `layoutId="hover-indicator"`.
+- **Dynamic tabs** — pasa cualquier número de tabs vía `tabs` prop; el contenedor hace `scroll` horizontal automático.
+
+## Props
+
+| Prop Name   | Type                     | Default      | Description |
+|-------------|--------------------------|--------------|-------------|
+| `tabs`      | `Array<{id, label}>`     | `[]`         | Tabs to display. |
+| `activeTab` | `string`                 | `tabs[0].id` | Controlled active tab id. |
+| `onChange`  | `function`               | `(id)=>{}`   | Called when tab changes. |
+| `darkMode`  | `boolean`                | `false`      | Enables dark mode styling if `true`. |
+| `className` | `string`                 | `""`         | Additional classes merged via `cn()`. |
+| `style`     | `CSSProperties`          | `-`          | Inline styles. |
+
+Controlled: manage your own `activeTab` from the parent.
+
+### Features
+- Morphing indicator via **Framer Motion** `layoutId`.
+- Responsive `w-full` con `scrollbar-hide` + `snap-x` — soporta **N tabs** sin romper layout (prueba el botón + Add Tab en el preview).
+- Customizable via `className`/`style` con `cn()` (`src/lib/utils.js`).
+- Location: `src/components/interactive/FluidTabs.jsx`.

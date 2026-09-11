@@ -1,0 +1,55 @@
+---
+title: BentoGrid (Draggable Bento Grid)
+description: This section previews the BentoGrid component.
+---
+
+In this guide, we showcase the `BentoGrid` component, a bento grid with draggable cards, spring animation and auto-reorder.
+
+## Preview
+
+<BentoGridPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { BentoGrid } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  const items = [
+    { id:"1", title:"Revenue", content:"$42k", colSpan:"sm:col-span-2", color:"from-violet-500 to-purple-600" },
+    { id:"2", title:"Inbox", content:"12 new", rowSpan:"sm:row-span-2", color:"from-blue-500 to-cyan-500" },
+  ];
+
+  return <BentoGrid items={items} darkMode draggable />;
+}
+// Drag libre con dragElastic 0.4, al soltar busca closest [data-bento-id] y hace splice reorder
+```
+
+## Component Details
+
+The `BentoGrid` component consists of:
+- **Grid** `grid-cols-1 sm:grid-cols-3` with `auto-rows-[120px] sm:140px`.
+- **Cards** with `layout`, `drag` elastic `0.4`, gradient overlay.
+- **Reorder** on `dragEnd` via `document.elementFromPoint` + `[data-bento-id]`.
+
+## Props
+
+| Prop Name   | Type                                         | Default   | Description |
+|-------------|----------------------------------------------|-----------|-------------|
+| `items`     | `Array<{id,title,content,colSpan?,rowSpan?,color?}>` | fallback 5 demos | Grid items. |
+| `draggable` | `boolean`                                    | `true`    | Enables drag if `true`. |
+| `darkMode`  | `boolean`                                    | `false`   | Enables dark mode styling if `true`. |
+| `className` | `string`                                     | `""`      | Additional classes merged via `cn()`. |
+| `style`     | `CSSProperties`                              | `-`       | Inline styles. |
+
+Responsive: `grid-cols-1 sm:grid-cols-3`, `colSpan` with `sm:` prefix, `auto-rows-[120px] sm:140px`.
+
+### Features
+- Spring reorder with **Framer Motion** `layout`.
+- Gradient accents via `color` prop (`from-... to-...`).
+- Customizable via `className`/`style`.
+- Location: `src/components/interactive/BentoGrid.jsx`.

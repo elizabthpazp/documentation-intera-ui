@@ -1,0 +1,69 @@
+---
+title: Tabs (Pestañas)
+description: Esta sección muestra una vista previa del componente Tabs.
+---
+
+El componente `Tabs` te permite organizar el contenido en múltiples secciones, permitiendo a los usuarios cambiar entre ellas fácilmente. Esto es especialmente útil para mostrar contenido relacionado de forma compacta.
+
+## Vista Previa
+
+<Tabs defaultValue="java" className="pt-5 pb-1">
+  <TabsList>
+    <TabsTrigger value="java">Java</TabsTrigger>
+    <TabsTrigger value="typescript">TypeScript</TabsTrigger>
+  </TabsList>
+  <TabsContent value="java">
+    ```java
+    // HelloWorld.java
+    public class HelloWorld {
+        public static void main(String[] args) {
+            System.out.println("Hello, World!");
+        }
+    }
+    ```
+  </TabsContent>
+  <TabsContent value="typescript">
+    ```typescript
+    // helloWorld.ts
+    function helloWorld(): void {
+        console.log("Hello, World!");
+    }
+    helloWorld();
+    ```
+  </TabsContent>
+</Tabs>
+
+## Propiedades
+
+| Prop        | Tipo   | Por Defecto     | Descripción                                      |
+|-------------|--------|-------------|--------------------------------------------------|
+| `defaultValue` | `string` | `null` | Valor de la pestaña seleccionada por defecto. |
+| `className` | `string` | `""` | Clases CSS adicionales para estilizar el componente Tabs. |
+
+## Código
+
+```jsx
+<Tabs defaultValue="java" className="pt-5 pb-1">
+  <TabsList>
+    <TabsTrigger value="java">Java</TabsTrigger>
+    <TabsTrigger value="typescript">TypeScript</TabsTrigger>
+  </TabsList>
+  <TabsContent value="java">
+    ```java
+    // HelloWorld.java
+    public class HelloWorld {
+        public static void main(String[] args) {
+            System.out.println("Hello, World!");
+        }
+    }
+    ```</TabsContent>
+  <TabsContent value="typescript">
+    ```typescript
+    // helloWorld.ts
+    function helloWorld(): void {
+        console.log("Hello, World!");
+    }
+    helloWorld();
+    ```</TabsContent>
+</Tabs>
+```

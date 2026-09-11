@@ -1,0 +1,69 @@
+---
+title: FluidTabs (Pestañas con Indicador Fluido)
+description: Esta sección muestra una vista previa del componente FluidTabs.
+---
+
+En esta guía presentamos el componente `FluidTabs`, pestañas con un indicador fluido que usa `layoutId`.
+
+## Vista Previa
+
+<FluidTabsPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { FluidTabs } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  const [tabs, setTabs] = useState([
+    {id:"design", label:"Design"},
+    {id:"code", label:"Code"},
+    {id:"ship", label:"Ship"},
+    {id:"analytics", label:"Analytics"},
+    {id:"growth", label:"Growth"},
+  ]);
+  const [tab, setTab] = useState("design");
+
+  // Añadir más tabs dinámicamente
+  const addTab = () => setTabs([...tabs, { id: `tab-${tabs.length}`, label: `Tab ${tabs.length + 1}` }]);
+
+  return (
+    <>
+      <FluidTabs tabs={tabs} activeTab={tab} onChange={setTab} darkMode />
+      <button onClick={addTab}>+ Add Tab</button>
+    </>
+  );
+}
+```
+
+## Detalles del Componente
+
+El componente `FluidTabs` consta de:
+- Un **contenedor tipo píldora** con borde y `overflow-x-auto`.
+- **Indicador activo** con `layoutId="fluid-indicator"` y resorte (`bounce:0.25, stiffness:130`).
+- **Indicador hover** con `layoutId="hover-indicator"`.
+- **Pestañas dinámicas** — pasa cualquier número de pestañas vía la prop `tabs`; el contenedor hace scroll horizontal automáticamente.
+
+## Propiedades
+
+| Nombre de Prop | Tipo                     | Por Defecto      | Descripción |
+|-------------|--------------------------|--------------|-------------|
+| `tabs`      | `Array<{id, label}>`     | `[]`         | Pestañas a mostrar. |
+| `activeTab` | `string`                 | `tabs[0].id` | Id de la pestaña activa controlada. |
+| `onChange`  | `function`               | `(id)=>{}`   | Se ejecuta al cambiar de pestaña. |
+| `darkMode`  | `boolean`                | `false`      | Activa el estilo en modo oscuro si es `true`. |
+| `className` | `string`                 | `""`         | Clases adicionales combinadas vía `cn()`. |
+| `style`     | `CSSProperties`          | `-`          | Estilos en línea. |
+
+Controlado: gestiona tu propio `activeTab` desde el componente padre.
+
+### Características
+
+- Indicador fluido vía **Framer Motion** `layoutId`.
+- Responsivo `w-full` con `scrollbar-hide` + `snap-x` — soporta **N pestañas** sin romper el diseño (prueba el botón + Add Tab en la vista previa).
+- Personalizable vía `className`/`style` con `cn()` (`src/lib/utils.js`).
+- Ubicación: `src/components/interactive/FluidTabs.jsx`.

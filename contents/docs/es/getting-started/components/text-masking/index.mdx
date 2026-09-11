@@ -1,0 +1,56 @@
+---
+title: TextMasking (Texto con Fondo de Imagen)
+description: Esta sección muestra una vista previa del componente TextMasking.
+---
+
+En esta guía presentamos el componente `TextMasking`, diseñado para aplicar un fondo de imagen al texto utilizando técnicas de enmascaramiento CSS.
+
+## Vista Previa
+
+<TextMasking1 />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { TextMasking } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (   
+     <TextMasking 
+       image={'image.png'}
+       title={'Text ♥️ ♥️ Masking'}
+     />  
+  );
+}
+```
+
+## Detalles del Componente
+
+El componente `TextMasking` consta de:
+- Un **elemento de texto** donde el contenido se enmascara usando una imagen.
+- Una **imagen de fondo personalizable** aplicada como máscara.
+- Un **efecto de enmascaramiento basado en CSS** para crear una superposición de texto visualmente atractiva.
+
+## Propiedades
+
+El componente `TextMasking` acepta las siguientes props:
+
+| Nombre de Prop | Tipo     | Descripción |
+|-----------|---------|-------------|
+| `image`   | `string` | URL de la imagen utilizada como máscara para el texto. |
+| `title`   | `string` | Contenido de texto al que se aplicará el fondo de imagen. |
+
+Estas props permiten personalizar el texto y la imagen de fondo, haciendo que el componente sea flexible para diversas necesidades de diseño.
+
+### Características
+
+- Usa **enmascaramiento CSS** para un efecto de texto moderno y elegante.
+- **Imagen y texto totalmente personalizables**.
+- Diseño responsivo para diferentes tamaños de pantalla.
+- Ligero y eficiente para aplicaciones web.
+
+Este componente mejora el diseño de la interfaz añadiendo un efecto visual único a los elementos de texto.

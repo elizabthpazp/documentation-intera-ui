@@ -1,0 +1,79 @@
+---
+title: Quick Start Guide
+description: Get started with InteraUI quickly and efficiently.
+---
+
+Follow these simple instructions to set up **InteraUI** and integrate reusable UI components into your project. 🚀
+
+## Installation
+
+1. **Install the Library**
+   
+   Use npm or yarn or pnpm to install **intera-ui** in your project:
+
+   ```sh
+   npm install @elizabthpazp/intera-ui
+   ```
+   
+   or
+   
+   ```sh
+   yarn add @elizabthpazp/intera-ui
+   ```
+
+   or
+   
+   ```sh
+   pnpm add @elizabthpazp/intera-ui
+   ```
+
+2. **Import and Use Components**
+
+   - Import styles globally in your project:
+
+     ```javascript
+     import "@elizabthpazp/intera-ui/dist/globals.css";
+     ```
+
+   - Import and use individual components:
+
+     ```javascript
+     import { ButtonCard } from "@elizabthpazp/intera-ui";
+
+     function App() {
+       const [userData, setUserData] = useState(null);
+
+       const handleLogin = (email, password, rememberMe) => {
+        setUserData({ email, password, rememberMe }); 
+       };
+
+       return <ButtonCard title={'Login'} darkMode={true} onLogin={handleLogin}></ButtonCard>;
+     }
+
+     export default App;
+     ```
+
+## Development & Contribution
+
+If you want to modify or contribute to the library, follow these steps:
+
+1. **Clone the Repository**
+   ```sh
+   git clone https://github.com/elizabthpazp/intera-ui.git
+   ```
+2. **Navigate into the Project**
+   ```sh
+   cd intera-ui
+   ```
+3. **Install Dependencies**
+   ```sh
+   npm install
+   ```
+4. **Run the Development Server**
+   ```sh
+   npm run dev
+   ```
+
+## Explore Further
+
+This guide helps you quickly integrate **InteraUI** into your project. For more details, explore the documentation or check the repository on GitHub. 🚀

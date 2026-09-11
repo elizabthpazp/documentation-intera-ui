@@ -1,0 +1,52 @@
+---
+title: MagneticButton (Elastic Magnetic Button)
+description: This section previews the MagneticButton component.
+---
+
+In this guide, we showcase the `MagneticButton` component, a button that follows the cursor with elastic spring physics.
+
+## Preview
+
+<MagneticButtonPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { MagneticButton } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <MagneticButton strength={0.6} darkMode onClick={handleAction} className="bg-[#ff4149] hover:bg-[#ff6b6b]">
+      EXPLORAR AHORA
+    </MagneticButton>
+  );
+}
+```
+
+## Component Details
+
+The `MagneticButton` component consists of:
+- A **button** that translates towards the cursor within its bounds.
+- **Spring animation** with `stiffness: 150, damping: 15`.
+- Inner `span` with subtle parallax.
+
+## Props
+
+| Prop Name   | Type       | Default | Description |
+|-------------|------------|---------|-------------|
+| `children`  | `ReactNode`| `-`     | Button text/content. |
+| `onClick`   | `function` | `()=>{}`| Called when button is clicked. |
+| `strength`  | `number`   | `0.5`   | Magnetic strength `0` to `1`. |
+| `darkMode`  | `boolean`  | `false` | Enables dark mode styling if `true`. |
+| `className` | `string`   | `""`    | Additional classes merged via `cn()`. |
+| `style`     | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- Uses **Framer Motion** `motion.button` with spring.
+- `active:scale-95` for press feedback.
+- Customizable via `className`/`style` with `cn()` (`src/lib/utils.js`).
+- Location: `src/components/interactive/MagneticButton.jsx`.

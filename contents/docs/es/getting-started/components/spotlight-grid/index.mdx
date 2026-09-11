@@ -1,0 +1,58 @@
+---
+title: SpotlightGrid (Cuadrícula con Efecto Spotlight)
+description: Esta sección muestra una vista previa del componente SpotlightGrid.
+---
+
+En esta guía presentamos el componente `SpotlightGrid`, una cuadrícula con efecto spotlight radial que sigue al ratón en cada tarjeta.
+
+## Vista Previa
+
+<SpotlightGridPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { SpotlightGrid } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <SpotlightGrid
+      darkMode
+      items={[
+        { id:"1", title:"Realtime", content:"Sync en 12ms" },
+        { id:"2", title:"Secure", content:"E2E encryption" },
+      ]}
+    />
+  );
+}
+// Cada tarjeta rastrea su propio ratón (no la cuadrícula), radial-gradient 500px interior + 400px borde
+```
+
+## Detalles del Componente
+
+El componente `SpotlightGrid` consta de:
+- **Cuadrícula** `grid-cols-1 sm:grid-cols-2` con `gap-4 p-4 rounded-2xl`.
+- **SpotlightCard** rastrea su propio `mouse` (`x,y`) y `hovered` — `radial-gradient 500px` interior + `400px` borde.
+- Spotlight de borde vía `maskComposite: exclude` + `padding:1px`.
+
+## Propiedades
+
+| Nombre de Prop | Tipo                                  | Por Defecto   | Descripción |
+|-------------|---------------------------------------|-----------|-------------|
+| `items`     | `Array<{id,title,content,icon?}>`     | 4 por defecto| Elementos de la cuadrícula. |
+| `darkMode`  | `boolean`                             | `false`   | Activa el estilo en modo oscuro si es `true`. |
+| `className` | `string`                              | `""`      | Clases adicionales combinadas vía `cn()`. |
+| `style`     | `CSSProperties`                       | `-`       | Estilos en línea. |
+
+Responsivo: `grid-cols-1 sm:grid-cols-2`, `p-4 rounded-2xl`, `bg-gray-950` vs `bg-gray-50`.
+
+### Características
+
+- Seguimiento del ratón por tarjeta — sin listener global en la cuadrícula.
+- Doble `radial-gradient` (interior + borde) para profundidad.
+- Personalizable vía `className`/`style` con `cn()`.
+- Ubicación: `src/components/interactive/SpotlightGrid.jsx`.

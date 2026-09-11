@@ -1,0 +1,54 @@
+---
+title: PerspectiveCard (Tarjeta 3D con Perspectiva)
+description: Esta sección muestra una vista previa del componente PerspectiveCard.
+---
+
+En esta guía presentamos el componente `PerspectiveCard`, una tarjeta 3D que se inclina con el movimiento del ratón usando `preserve-3d`.
+
+## Vista Previa
+
+<PerspectiveCardPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { PerspectiveCard } from "@elizabthpazp/intera-ui";
+import { Rocket } from "lucide-react";
+
+export default function Home() {
+  return (
+    <PerspectiveCard darkMode className="w-80 h-[420px]">
+      <Rocket size={48}/>
+      <h3 className="font-black">3D PERSPECTIVE</h3>
+      <p className="text-xs opacity-50">Hover para profundidad</p>
+    </PerspectiveCard>
+  );
+}
+```
+
+## Detalles del Componente
+
+El componente `PerspectiveCard` consta de:
+- Una **tarjeta** que rota en `rotateX`/`rotateY` vía `useMotionValue` + `useSpring`.
+- **Profundidad 3D** con `transformStyle: "preserve-3d"` y resplandor interior.
+- Se restablece al hacer `mouseLeave`.
+
+## Propiedades
+
+| Nombre de Prop | Tipo            | Por Defecto | Descripción |
+|-------------|-----------------|---------|-------------|
+| `children`  | `ReactNode`     | `-`     | Contenido dentro de la tarjeta. |
+| `darkMode`  | `boolean`       | `false` | Activa el estilo en modo oscuro si es `true`. |
+| `className` | `string`        | `""`    | Clases adicionales combinadas vía `cn()`. |
+| `style`     | `CSSProperties` | `-`     | Estilos en línea (combinados con transformaciones 3D). |
+
+### Características
+
+- Inclinación 3D suave con **Framer Motion** `useTransform` (`±17.5deg`).
+- Responsivo `w-64 h-80 sm:h-96 max-w-[90vw]` con `rounded-3xl`.
+- Personalizable vía `className`/`style`.
+- Ubicación: `src/components/interactive/PerspectiveCard.jsx`.

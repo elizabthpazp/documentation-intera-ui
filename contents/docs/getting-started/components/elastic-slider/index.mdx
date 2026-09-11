@@ -1,0 +1,50 @@
+---
+title: ElasticSlider (Elastic Thumb Slider)
+description: This section previews the ElasticSlider component.
+---
+
+In this guide, we showcase the `ElasticSlider` component, a numeric slider with elastic thumb physics.
+
+## Preview
+
+<ElasticSliderPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { ElasticSlider } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  const [price, setPrice] = useState(80);
+  return <ElasticSlider min={0} max={200} defaultValue={80} onChange={setPrice} darkMode />;
+}
+```
+
+## Component Details
+
+The `ElasticSlider` component consists of:
+- A **track** with fill progress and **thumb** with spring (`stiffness: 400, damping: 30`).
+- **Drag or click** on track to set value.
+- Displays current value with animated thumb.
+
+## Props
+
+| Prop Name      | Type       | Default | Description |
+|----------------|------------|---------|-------------|
+| `min`          | `number`   | `0`     | Minimum value. |
+| `max`          | `number`   | `100`   | Maximum value. |
+| `defaultValue` | `number`   | `50`    | Initial value. |
+| `onChange`     | `function` | `(v)=>{}` | Called with new value on change. |
+| `darkMode`     | `boolean`  | `false` | Enables dark mode styling if `true`. |
+| `className`    | `string`   | `""`    | Additional classes merged via `cn()`. |
+| `style`        | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- Elastic dragging via **Framer Motion** `useSpring`.
+- Responsive `max-w-[260px]` with `w-full` fallback.
+- Customizable via `className`/`style` with `cn()`.
+- Location: `src/components/interactive/ElasticSlider.jsx`.

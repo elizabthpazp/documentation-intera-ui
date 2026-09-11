@@ -1,0 +1,57 @@
+---
+title: SpotlightGrid (Spotlight Hover Grid)
+description: This section previews the SpotlightGrid component.
+---
+
+In this guide, we showcase the `SpotlightGrid` component, a grid with radial spotlight that follows the mouse per card.
+
+## Preview
+
+<SpotlightGridPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { SpotlightGrid } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <SpotlightGrid
+      darkMode
+      items={[
+        { id:"1", title:"Realtime", content:"Sync en 12ms" },
+        { id:"2", title:"Secure", content:"E2E encryption" },
+      ]}
+    />
+  );
+}
+// Cada card trackea su propio mouse (no el grid), radial-gradient 500px interior + 400px borde
+```
+
+## Component Details
+
+The `SpotlightGrid` component consists of:
+- **Grid** `grid-cols-1 sm:grid-cols-2` with `gap-4 p-4 rounded-2xl`.
+- **SpotlightCard** tracks its own `mouse` (`x,y`) and `hovered` — `radial-gradient 500px` interior + `400px` border.
+- Border spotlight via `maskComposite: exclude` + `padding:1px`.
+
+## Props
+
+| Prop Name   | Type                                  | Default   | Description |
+|-------------|---------------------------------------|-----------|-------------|
+| `items`     | `Array<{id,title,content,icon?}>`     | fallback 4| Grid items. |
+| `darkMode`  | `boolean`                             | `false`   | Enables dark mode styling if `true`. |
+| `className` | `string`                              | `""`      | Additional classes merged via `cn()`. |
+| `style`     | `CSSProperties`                       | `-`       | Inline styles. |
+
+Responsive: `grid-cols-1 sm:grid-cols-2`, `p-4 rounded-2xl`, `bg-gray-950` vs `bg-gray-50`.
+
+### Features
+- Per-card mouse tracking — no global grid listener.
+- Dual `radial-gradient` (interior + border) for depth.
+- Customizable via `className`/`style` with `cn()`.
+- Location: `src/components/interactive/SpotlightGrid.jsx`.

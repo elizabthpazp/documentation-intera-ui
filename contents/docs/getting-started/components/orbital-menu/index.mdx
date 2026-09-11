@@ -1,0 +1,59 @@
+---
+title: OrbitalMenu (Orbital Radial Menu)
+description: This section previews the OrbitalMenu component.
+---
+
+In this guide, we showcase the `OrbitalMenu` component, a central button that explodes into a circular orbit.
+
+## Preview
+
+<OrbitalMenuPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { OrbitalMenu } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <OrbitalMenu
+      radius={90}
+      darkMode
+      items={[
+        { id:"1", icon:"✦", label:"Design", color:"from-violet-500 to-purple-600", onClick:()=>{} },
+      ]}
+    />
+  );
+}
+// Centro fijo con x:"-50%" y:"-50%" vía Framer (no Tailwind translate) para no saltar
+// Items con marginLeft:-28 + x/y orbital, tooltip z-50 por encima del anillo z-0
+```
+
+## Component Details
+
+The `OrbitalMenu` component consists of:
+- **Center button** (`56px`) with `Plus`/`X` rotate spring.
+- **Orbital items** positioned via `cos`/`sin * radius` with `AnimatePresence`.
+- **Tooltips** `z-50` above ring `z-0`.
+
+## Props
+
+| Prop Name   | Type                                   | Default      | Description |
+|-------------|----------------------------------------|--------------|-------------|
+| `items`     | `Array<{id,icon,label,onClick,color?}>`| fallback 4   | Menu items. |
+| `radius`    | `number`                               | `90`         | Orbit radius (responsive `min(radius,28vw)`). |
+| `darkMode`  | `boolean`                              | `false`      | Enables dark mode styling if `true`. |
+| `className` | `string`                               | `""`         | Additional classes merged via `cn()`. |
+| `style`     | `CSSProperties`                        | `-`          | Inline styles. |
+
+Responsive: `responsiveRadius = min(radius,28vw)`, `max-w-[90vw]`, `size 56`.
+
+### Features
+- Orbital math with **Framer Motion** spring (`damping:18, stiffness:260`).
+- Fixed center via `x:"-50%" y:"-50%"` (Framer, not Tailwind) to avoid jump.
+- Customizable via `className`/`style`.
+- Location: `src/components/interactive/OrbitalMenu.jsx`.

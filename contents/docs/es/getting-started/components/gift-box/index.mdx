@@ -1,0 +1,65 @@
+---
+title: GiftBox (Componente de Animación de Caja de Regalo)
+description: Esta sección muestra una vista previa del componente GiftBox.
+---
+
+En esta guía presentamos el componente `GiftBox`, diseñado para mostrar una caja de regalo interactiva que se abre al pasar el ratón o hacer clic, revelando un mensaje sorpresa.
+
+## Vista Previa
+
+<GiftBox1 />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { GiftBox } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <GiftBox 
+      primaryColor={"#8E44AD"}
+      secondaryColor={"#1F2937"} 
+      message={"ADD YOUR MESSAGE!!"}
+    />
+  );
+}
+```
+
+## Detalles del Componente
+
+El componente `GiftBox` consta de:
+- Una **caja de regalo** que permanece cerrada por defecto.
+- Una **animación de la tapa** que se eleva al pasar el ratón o hacer clic.
+- Una **animación de revelado del mensaje** cuando se abre la caja.
+- La caja se cierra cuando el ratón abandona el componente.
+
+## Propiedades
+
+El componente `GiftBox` acepta varias props para su personalización:
+
+| Nombre de Prop       | Tipo       | Descripción |
+|------------------------|-----------|-------------|
+| `primaryColor`        | `string`  | Define el color principal de la caja. |
+| `secondaryColor`      | `string`  | Define el color de la tapa. |
+| `secondaryAccentColor`| `string`  | Color de acento adicional para detalles. |
+| `tertiaryColor`       | `string`  | Tercer color para estilado adicional. |
+| `accentColor`         | `string`  | Color utilizado para resaltar. |
+| `shadowColor`         | `string`  | Define el color de la sombra para el efecto de profundidad. |
+| `textColor`           | `string`  | Color del texto del mensaje. |
+| `containerColor`      | `string`  | Color de fondo del contenedor que alberga la caja. |
+| `message`             | `string`  | Texto que aparece cuando se abre la caja. |
+
+Estas props permiten una personalización completa del componente, haciéndolo adaptable a diversos requisitos de interfaz.
+
+### Características
+
+- Animación interactiva usando **Framer Motion**.
+- Colores y mensaje personalizables.
+- Soporta interacciones tanto de **hover** como de **clic**.
+- Diseño responsivo para diferentes tamaños de pantalla.
+
+Este componente mejora la interacción del usuario añadiendo una animación lúdica y dinámica a la interfaz.

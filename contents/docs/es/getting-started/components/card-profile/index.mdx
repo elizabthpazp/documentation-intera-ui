@@ -1,0 +1,67 @@
+---
+title: CardProfile (Componente de Tarjeta de Perfil)
+description: Esta sección muestra una vista previa del componente CardProfile.
+---
+
+En esta guía presentamos el componente `CardProfile`, diseñado para mostrar un perfil de usuario con imagen, título, subtítulo, descripción y dos botones de acción.
+
+## Vista Previa
+
+<ProfileCard>
+</ProfileCard>
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { CardProfile } from "@elizabthpazp/intera-ui";
+
+export default function Home() {  
+  const handleClick = () => { 
+    console.log("Button Clicked");
+  }; 
+
+  return ( 
+   <CardProfile onClickOne={handleClick} title={Emily Brooks} />   
+  );
+}
+```
+
+## Detalles del Componente
+
+El componente `CardProfile` consta de:
+- Una **imagen de perfil** mostrada en la parte superior.
+- Un **título** que representa el nombre o encabezado principal.
+- Un **subtítulo** para detalles adicionales como el puesto o rol.
+- Una sección de **descripción** para una breve biografía o información relevante.
+- Dos **botones de acción** que pueden desencadenar diferentes eventos.
+
+## Propiedades
+
+El componente `CardProfile` acepta varias props que permiten personalizar su comportamiento y apariencia:
+
+| Nombre de Prop    | Tipo       | Descripción |
+|----------------|-----------|-------------|
+| `darkMode`     | `boolean` | Activa el estilo en modo oscuro si es `true`. |
+| `image`        | `string`  | URL de la imagen de perfil. |
+| `title`        | `string`  | Título principal mostrado en la tarjeta. |
+| `subtitle`     | `string`  | Subtítulo mostrado debajo del título. |
+| `description`  | `string`  | Descripción breve o biografía. |
+| `buttonLeftLabel`  | `string`  | Etiqueta del primer botón de acción. |
+| `buttonRightLabel`  | `string`  | Etiqueta del segundo botón de acción. |
+| `onClickLeft`   | `function` | Función que se ejecuta al hacer clic en el primer botón. |
+| `onClickRight`   | `function` | Función que se ejecuta al hacer clic en el segundo botón. |
+
+Estas props permiten una personalización completa del componente, haciéndolo flexible para diferentes requisitos de interfaz.
+
+### Características
+
+- Soporta tanto **modo claro como modo oscuro**.
+- Usa **Tailwind CSS** para un estilado consistente.
+- Botones personalizables para diferentes interacciones.
+- Diseño responsivo para varios tamaños de pantalla.
+
+Este componente mejora la interacción del usuario presentando una visualización de perfil limpia e interactiva.

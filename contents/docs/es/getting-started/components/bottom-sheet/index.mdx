@@ -1,0 +1,62 @@
+---
+title: BottomSheet (Panel Inferior Gestual)
+description: Esta sección muestra una vista previa del componente BottomSheet.
+---
+
+En esta guía presentamos el componente `BottomSheet`, un panel inferior gestual con arrastre elástico.
+
+## Vista Previa
+
+<BottomSheetPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { BottomSheet } from "@elizabthpazp/intera-ui";
+import { useState } from "react";
+
+export default function Home() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button onClick={()=>setOpen(true)}>Open Sheet</button>
+      <BottomSheet open={open} onOpenChange={setOpen} title="Bottom Sheet" darkMode snapPoints={[0.85]}>
+        <p>Arrastra hacia abajo para cerrar</p>
+      </BottomSheet>
+    </>
+  );
+}
+// Cierra por: clic en backdrop, botón ✕, arrastre >100px o velocity>400, o toque en handle
+```
+
+## Detalles del Componente
+
+El componente `BottomSheet` consta de:
+- **Fondo (backdrop)** `bg-black/40 backdrop-blur-sm` con cierre al hacer clic.
+- **Panel** `fixed bottom-0` con `drag="y"` elástico `0.45`.
+- **Asa (handle)** + cabecera opcional `title` con botón `✕`.
+
+## Propiedades
+
+| Nombre de Prop | Tipo       | Por Defecto | Descripción |
+|----------------|------------|----------|-------------|
+| `open`         | `boolean`  | `false`  | Estado abierto controlado. |
+| `onOpenChange` | `function` | `()=>{}` | Se ejecuta cuando cambia el estado abierto. |
+| `title`        | `string`   | `""`     | Título de la cabecera con botón ✕. |
+| `snapPoints`   | `number[]` | `[0.85]` | Alturas `0-1` → `height: 85vh`. |
+| `darkMode`     | `boolean`  | `false`  | Activa el estilo en modo oscuro si es `true`. |
+| `className`    | `string`   | `""`     | Clases adicionales combinadas vía `cn()`. |
+| `style`        | `CSSProperties` | `-`  | Estilos en línea. |
+
+Responsivo: `height: 85vh max 92vh`, `fixed bottom-0`, `overscroll-contain`, `scrollbar-gutter: stable`.
+
+### Características
+
+- Arrastra para cerrar (`velocity>400` o `offset>100px`).
+- Sin salto de diseño — usa `overscrollBehavior: contain` en lugar de `overflow:hidden`.
+- Estilizado con **Tailwind CSS** + resorte de **Framer Motion**.
+- Ubicación: `src/components/interactive/BottomSheet.jsx`.

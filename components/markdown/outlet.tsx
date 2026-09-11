@@ -1,9 +1,20 @@
 import { BaseMdxFrontmatter, getAllChilds } from "@/lib/markdown";
 import Link from "next/link";
+import { cookies, headers } from "next/headers";
 
 export default async function Outlet({ path }: { path: string }) {
   if (!path) throw new Error("path not provided");
-  const output = await getAllChilds(path);
+  let lang = "es";
+  try {
+    const h = await headers();
+    const xLocale = h.get("x-locale");
+    if (xLocale === "en" || xLocale === "es") lang = xLocale;
+    else {
+      const c = await cookies();
+      lang = c.get("lang")?.value === "en" ? "en" : "es";
+    }
+  } catch {}
+  const output = await getAllChilds(path, lang);
 
   return (
     <div className="grid md:grid-cols-2 gap-5">

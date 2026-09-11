@@ -1,0 +1,60 @@
+---
+title: KineticMorphText (Texto Cinético Transformable)
+description: Esta sección muestra una vista previa del componente KineticMorphText.
+---
+
+En esta guía presentamos el componente `KineticMorphText`, texto cinético que se transforma entre frases.
+
+## Vista Previa
+
+<KineticMorphTextPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { KineticMorphText } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <KineticMorphText
+      texts={["InteraUI","Interactive","Modern","Delightful"]}
+      interval={2200}
+      variant="blur"
+      darkMode
+      className="py-8"
+    />
+  );
+}
+// Puntos clickeables para cambiar manualmente
+```
+
+## Detalles del Componente
+
+El componente `KineticMorphText` consta de:
+- Un **rotador de frases** con `setInterval` y `AnimatePresence mode="wait"`.
+- **Variantes**: `blur` (desenfoque+y), `slide` (x), `scale`.
+- **Puntos** para selección manual (estado `active`).
+
+## Propiedades
+
+| Nombre de Prop | Tipo       | Por Defecto                    | Descripción |
+|-------------|------------|----------------------------------|-------------|
+| `texts`     | `string[]` | `["InteraUI",...]`               | Frases a transformar. |
+| `interval`  | `number`   | `2500` ms                        | Tiempo entre cambios. |
+| `variant`   | `string`   | `"blur"` (`blur`/`slide`/`scale`) | Variante de animación. |
+| `darkMode`  | `boolean`  | `false`                          | Activa el estilo en modo oscuro si es `true`. |
+| `className` | `string`   | `""`                             | Clases adicionales combinadas vía `cn()`. |
+| `style`     | `CSSProperties` | `-`                          | Estilos en línea. |
+
+Responsivo: `text-3xl sm:text-4xl md:text-6xl`, `whitespace-normal sm:whitespace-nowrap`, `h-16 sm:h-20`.
+
+### Características
+
+- Transformación vía **Framer Motion** `AnimatePresence`.
+- Puntos clickeables para control manual.
+- Personalizable vía `className`/`style`.
+- Ubicación: `src/components/interactive/KineticMorphText.jsx`.

@@ -1,0 +1,56 @@
+---
+title: InteractiveLens (Reveal Lens)
+description: This section previews the InteractiveLens component.
+---
+
+In this guide, we showcase the `InteractiveLens` component, a lens that reveals a sharp layer over a blurred grayscale background.
+
+## Preview
+
+<InteractiveLensPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { InteractiveLens } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <InteractiveLens 
+      size={240}
+      darkMode
+      background={<div className="bg-zinc-900 text-zinc-800 text-6xl font-black">DARK</div>}
+    >
+      <div className="bg-white text-black text-6xl font-black">LIGHT</div>
+    </InteractiveLens>
+  );
+}
+```
+
+## Component Details
+
+The `InteractiveLens` component consists of:
+- A **background layer** (`opacity-40 grayscale`) — defaults to `children` if no `background`.
+- A **mask layer** with `radial-gradient` circle that follows cursor/touch.
+- **Lens** with spring transition (`damping:20, stiffness:300`).
+
+## Props
+
+| Prop Name    | Type            | Default    | Description |
+|--------------|-----------------|------------|-------------|
+| `children`   | `ReactNode`     | `-`        | Sharp content revealed by lens. |
+| `background` | `ReactNode`     | `children` | Blurred background content. |
+| `size`       | `number`        | `200`      | Lens diameter in px (responsive `min(size,40vw)`). |
+| `darkMode`   | `boolean`       | `false`    | Enables dark mode styling if `true`. |
+| `className`  | `string`        | `""`       | Additional classes merged via `cn()`. |
+| `style`      | `CSSProperties` | `-`        | Inline styles. |
+
+### Features
+- Follows **mouse** and **touch** with `maskImage` radial gradient.
+- Responsive `size` clamped to `40vw` on mobile, `touch-none`.
+- Customizable via `className`/`style`.
+- Location: `src/components/interactive/InteractiveLens.jsx`.

@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/contexts/theme-provider";
+import { LanguageProvider } from "@/components/contexts/language-provider";
 import { Navbar } from "@/components/navbar";
 import { Space_Mono, Space_Grotesk } from "next/font/google";
 import { Footer } from "@/components/footer";
 import "@/styles/globals.css";
 import { Analytics } from "@vercel/analytics/react"
+import { headers, cookies } from "next/headers";
+import { defaultLocale, localeMetadata, type Locale } from "@/lib/i18n";
 
 const sansFont = Space_Grotesk({
   subsets: ["latin"],
@@ -20,38 +23,73 @@ const monoFont = Space_Mono({
   weight: "400",
 });
 
-export const metadata: Metadata = {
-  title: "Free React Components - Documentation",
-  icons:['logo-intera-ui.jpeg'],
-  assets: ['logo-intera-ui.jpeg'],
-  keywords: ['React', 'Components', 'UI', 'InteraUI', 'intera-ui', 'Interactive', 'Free React Components'],
-  metadataBase: new URL("https://intera-ui.elijs.dev/"),
-  description:
-    "Interactive / Lightweight / Beautiful components, easy to integrate into your website",
-  creator: 'elijs.dev',
-  openGraph: {
-    type: "website",
-    url: "https://intera-ui.elijs.dev/",
-    title: "Free React Components - Documentation",
-    description: "Interactive / Lightweight / Beautiful components, easy to integrate into your website",
-    siteName: "InteraUI",
-    images: [{ url: "https://intera-ui.elijs.dev/logo-intera-ui.jpeg" }]
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@InteraUI",
-    creator: "@elijs.dev",
-    images: "https://intera-ui.elijs.dev/logo-intera-ui.jpeg"
-  }
-};
+async function getLocale(): Promise<Locale> {
+  try {
+    const h = await headers();
+    const xLocale = h.get("x-locale");
+    if (xLocale === "es" || xLocale === "en") return xLocale;
+  } catch {}
+  try {
+    const c = await cookies();
+    const v = c.get("lang")?.value;
+    if (v === "es" || v === "en") return v;
+  } catch {}
+  return defaultLocale;
+}
 
-export default function RootLayout({
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = localeMetadata[locale];
+  const base = "https://intera-ui.elijs.dev";
+  const canonical = locale === "es" ? `${base}/es` : `${base}/en`;
+  return {
+    title: t.title,
+    description: t.description,
+    icons: ['logo-intera-ui.jpeg'],
+    assets: ['logo-intera-ui.jpeg'],
+    keywords: locale === "es"
+      ? ['React', 'Componentes', 'UI', 'InteraUI', 'intera-ui', 'Interactivo', 'Componentes React Gratis']
+      : ['React', 'Components', 'UI', 'InteraUI', 'intera-ui', 'Interactive', 'Free React Components'],
+    metadataBase: new URL(base),
+    alternates: {
+      canonical,
+      languages: {
+        es: `${base}/es`,
+        en: `${base}/en`,
+        "x-default": `${base}/es`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title: t.title,
+      description: t.description,
+      siteName: "InteraUI",
+      locale: t.ogLocale,
+      alternateLocale: locale === "es" ? ["en_US"] : ["es_ES"],
+      images: [{ url: `${base}/logo-intera-ui.jpeg` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@InteraUI",
+      creator: "@elijs.dev",
+      images: `${base}/logo-intera-ui.jpeg`,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
@@ -64,18 +102,20 @@ export default function RootLayout({
         className={`${sansFont.variable} ${monoFont.variable} font-regular antialiased tracking-wide`}
         suppressHydrationWarning
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          <main className="sm:container mx-auto w-[90vw] h-auto scroll-smooth">
-            {children}
-          </main>
-          <Footer />
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
+            <main className="sm:container mx-auto w-[90vw] h-auto scroll-smooth">
+              {children}
+            </main>
+            <Footer />
+          </ThemeProvider>
+        </LanguageProvider>
         <Analytics />
       </body>
     </html>

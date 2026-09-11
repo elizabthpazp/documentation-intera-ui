@@ -1,0 +1,76 @@
+---
+title: ButtonCard (Botón con Modal de Inicio de Sesión)
+description: Esta sección muestra una vista previa del componente ButtonCard.
+---
+
+En esta guía presentamos el componente `ButtonCard`, diseñado para mostrar un modal de inicio de sesión al hacer clic en el botón. Este componente proporciona una forma elegante e interactiva para que los usuarios se autentiquen.
+
+## Vista Previa
+
+<CardButton> 
+</CardButton> 
+
+## Código
+
+     ```javascript
+     import "@elizabthpazp/intera-ui/dist/globals.css";
+     ``` 
+
+     ```javascript
+     import { ButtonCard } from "@elizabthpazp/intera-ui";
+     
+     function App() {
+       const [userData, setUserData] = useState(null);
+
+       const handleLogin = (email, password, rememberMe) => {
+        setUserData({ email, password, rememberMe }); 
+       };
+
+       return <ButtonCard title={'Login'} darkMode={true} onLogin={handleLogin}></ButtonCard>;
+     }
+
+     export default App;
+     ```
+
+## Detalles del Componente
+
+El componente `ButtonCard` consta de:
+- Un elegante botón **Entrar** que, al hacer clic, muestra un modal de inicio de sesión.
+- Una **capa superpuesta (overlay) modal** que permite cerrar el modal al hacer clic fuera de él.
+- Un **formulario de inicio de sesión** con campos para correo electrónico y contraseña.
+- Opciones para **recordarme** y **olvidé mi contraseña**.
+- Botones para **iniciar sesión** y **crear una cuenta**.
+
+## Propiedades
+
+El componente `ButtonCard` acepta varias props que permiten personalizar su comportamiento y apariencia:
+
+| Nombre de Prop      | Tipo       | Descripción |
+|------------------|-----------|-------------|
+| `principalButton` | `string`  | Texto del botón principal que abre el modal de inicio de sesión. |
+| `darkMode`       | `boolean` | Activa el estilo en modo oscuro si es `true`. |
+| `title`         | `string`  | Texto del título mostrado en el modal. |
+| `description`   | `string`  | Descripción o subtítulo del modal de inicio de sesión. |
+| `primaryButton`       | `string`  | Texto del botón de acción principal dentro del modal (p. ej., "Iniciar sesión"). |
+| `secondaryButton`       | `string`  | Texto del botón de acción secundario (p. ej., "Crear cuenta"). |
+| `emailPlaceholder`        | `string`  | Texto de marcador de posición para el primer campo (p. ej., "Correo electrónico"). |
+| `passwordPlaceholder`        | `string`  | Texto de marcador de posición para el segundo campo (p. ej., "Contraseña"). |
+| `notShowArrow`  | `boolean` | Si es `true`, oculta el icono de flecha en la interfaz. |
+| `notShowCombobox` | `boolean` | Si es `true`, oculta el campo de selección combobox. |
+| `notShowForgot` | `boolean` | Si es `true`, oculta el enlace "¿Olvidaste tu contraseña?". |
+| `combobox`      | `string`  | Marcador o etiqueta para el combobox (si está visible). |
+| `forgot`        | `string`  | Texto para el enlace "¿Olvidaste tu contraseña?". |
+| `forgotLink`      | `string`  | URL a la que navegar al hacer clic en un enlace relevante (p. ej., página de recuperación de contraseña). |
+| `onLogin`       | `function` | Función que se ejecuta al hacer clic en el botón de inicio de sesión. |
+| `onSignUp`      | `function` | Función que se ejecuta al hacer clic en el botón de registro. |
+
+Estas props permiten una personalización completa del componente, haciéndolo flexible para diferentes requisitos de interfaz.
+
+### Características
+
+- Usa `useState` para gestionar la visibilidad del modal.
+- Estilizado con Tailwind CSS para animaciones fluidas y consistencia visual.
+- Incluye **iconos de Lucide** para un aspecto moderno.
+- Soporta interacciones como cerrar el modal al hacer clic fuera.
+
+Este componente mejora el flujo de autenticación integrando una experiencia de inicio de sesión minimalista pero atractiva.

@@ -1,0 +1,61 @@
+---
+title: BottomSheet (Gestural Bottom Sheet)
+description: This section previews the BottomSheet component.
+---
+
+In this guide, we showcase the `BottomSheet` component, a gestural bottom sheet with elastic drag.
+
+## Preview
+
+<BottomSheetPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { BottomSheet } from "@elizabthpazp/intera-ui";
+import { useState } from "react";
+
+export default function Home() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <button onClick={()=>setOpen(true)}>Open Sheet</button>
+      <BottomSheet open={open} onOpenChange={setOpen} title="Bottom Sheet" darkMode snapPoints={[0.85]}>
+        <p>Arrastra hacia abajo para cerrar</p>
+      </BottomSheet>
+    </>
+  );
+}
+// Cierra por: backdrop click, botón ✕, drag >100px o velocity>400, o tap en handle
+```
+
+## Component Details
+
+The `BottomSheet` component consists of:
+- **Backdrop** `bg-black/40 backdrop-blur-sm` with click to close.
+- **Sheet** `fixed bottom-0` with `drag="y"` elastic `0.45`.
+- **Handle** + optional `title` header with `✕` button.
+
+## Props
+
+| Prop Name      | Type       | Default  | Description |
+|----------------|------------|----------|-------------|
+| `open`         | `boolean`  | `false`  | Controlled open state. |
+| `onOpenChange` | `function` | `()=>{}` | Called when open changes. |
+| `title`        | `string`   | `""`     | Header title with ✕ button. |
+| `snapPoints`   | `number[]` | `[0.85]` | Heights `0-1` → `height: 85vh`. |
+| `darkMode`     | `boolean`  | `false`  | Enables dark mode styling if `true`. |
+| `className`    | `string`   | `""`     | Additional classes merged via `cn()`. |
+| `style`        | `CSSProperties` | `-`  | Inline styles. |
+
+Responsive: `height: 85vh max 92vh`, `fixed bottom-0`, `overscroll-contain`, `scrollbar-gutter: stable`.
+
+### Features
+- Drag to close (`velocity>400` or `offset>100px`).
+- No layout shift — uses `overscrollBehavior: contain` not `overflow:hidden`.
+- Styled with **Tailwind CSS** + **Framer Motion** spring.
+- Location: `src/components/interactive/BottomSheet.jsx`.

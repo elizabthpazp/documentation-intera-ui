@@ -1,0 +1,47 @@
+---
+title: MorphingSearch (Expanding Search Input)
+description: This section previews the MorphingSearch component.
+---
+
+In this guide, we showcase the `MorphingSearch` component, an icon that expands to an input with spring animation.
+
+## Preview
+
+<MorphingSearchPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { MorphingSearch } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return <MorphingSearch placeholder="Buscar..." onSearch={(v)=> filter(v)} darkMode className="mx-auto" />;
+}
+```
+
+## Component Details
+
+The `MorphingSearch` component consists of:
+- A **circular button** (`48px`) with search icon.
+- **Expands** to `min(300px,90vw)` with spring (`stiffness:400, damping:30`).
+- **Input** with `AnimatePresence` and clear (`X`) button, `Enter` triggers `onSearch`.
+
+## Props
+
+| Prop Name     | Type       | Default                  | Description |
+|---------------|------------|--------------------------|-------------|
+| `placeholder` | `string`   | `"Search anything..."`   | Placeholder text when expanded. |
+| `onSearch`    | `function` | `(value)=>{}`            | Called on Enter or with current value. |
+| `darkMode`    | `boolean`  | `false`                  | Enables dark mode styling if `true`. |
+| `className`   | `string`   | `""`                     | Additional classes merged via `cn()`. |
+| `style`       | `CSSProperties` | `-`                 | Inline styles. |
+
+### Features
+- Spring morph via **Framer Motion** `layout`.
+- Responsive `max-w-[90vw]` with `h-12`.
+- Lucide `Search`/`X` icons.
+- Location: `src/components/interactive/MorphingSearch.jsx`.

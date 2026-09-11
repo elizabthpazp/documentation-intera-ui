@@ -1,3 +1,5 @@
+"use client";
+
 import { ModeToggle } from "@/components/theme-toggle";
 import { GithubIcon } from "lucide-react";
 import Link from "next/link";
@@ -8,6 +10,8 @@ import { page_routes } from "@/lib/routes-config";
 import { SheetClose } from "@/components/ui/sheet";
 import AlgoliaSearch from "./algolia-search"; 
 import { Logo } from "./logo";
+import { LanguageToggle } from "./language-toggle";
+import { useLanguage } from "@/components/contexts/language-provider";
 
 const NpmIcon = () => (
   <svg className="p-1"
@@ -23,7 +27,7 @@ const NpmIcon = () => (
 
 export const NAVLINKS = [
   {
-    title: "Documentation",
+    title: "Documentación",
     href: `/docs${page_routes[0].href}`,
   },
   {
@@ -31,7 +35,7 @@ export const NAVLINKS = [
     href: `https://blog.elijs.dev/`,
   },
   {
-    title: "Contact",
+    title: "Contacto",
     href: "mailto:elizabethpazp695@gmail.com" 
   },
   // {
@@ -76,7 +80,7 @@ export function Navbar() {
         <div className="flex items-center sm:justify-normal justify-between sm:gap-3 ml-1 sm:w-fit w-[90%]">
           <AlgoliaSearch {...algolia_props} />
           <div className="flex items-center justify-between sm:gap-2">
-            <div className="flex ml-4 sm:ml-0">
+            <div className="flex ml-4 sm:ml-0 items-center gap-1">
               <Link
                 href="https://github.com/elizabthpazp/intera-ui"
                 target="_blank"
@@ -97,6 +101,7 @@ export function Navbar() {
               >
                 <NpmIcon />
               </Link>
+              <LanguageToggle />
               <ModeToggle />
             </div>
           </div>
@@ -107,9 +112,15 @@ export function Navbar() {
 }
 
 export function NavMenu({ isSheet = false }) {
+  const { t, lang } = useLanguage();
+  const links = [
+    { title: t.navbar.documentation, href: `/${lang}/docs${page_routes[0].href}` },
+    { title: t.navbar.blog, href: `https://blog.elijs.dev/` },
+    { title: t.navbar.contact, href: "mailto:elizabethpazp695@gmail.com" },
+  ];
   return (
     <>
-      {NAVLINKS.map((item, index) => {
+      {links.map((item, index) => {
         const Comp = (
           <Anchor target={index==1 ? '_blank' : ''}
             key={item.title + item.href}

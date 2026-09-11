@@ -1,0 +1,68 @@
+---
+title: SwipeToConfirm (Slide to Confirm)
+description: This section previews the SwipeToConfirm component.
+---
+
+In this guide, we showcase the `SwipeToConfirm` component, a slider for critical actions (payment, delete). The library does NOT `alert` by default.
+
+## Preview
+
+<SwipeToConfirmPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { SwipeToConfirm } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <>
+      {/* With auto-reset after 3s */}
+      <SwipeToConfirm 
+        darkMode 
+        label="Desliza para pagar"
+        successLabel="Pagado"
+        onConfirm={() => mutatePayment()}
+        onReset={() => console.log("reset")}
+        resetDelay={3000}
+        allowReset
+      />
+
+      {/* Stays confirmed until user presses ↻ */}
+      <SwipeToConfirm darkMode label="Slide to confirm" successLabel="Confirmed" onConfirm={() => {}} />
+    </>
+  );
+}
+```
+
+## Component Details
+
+The `SwipeToConfirm` component consists of:
+- A **track** with background label and **draggable thumb**.
+- **Confirm** when `x >= dragRange - 10`, calls `onConfirm`.
+- **Success state** with check icon and optional `↻` reset button.
+
+## Props
+
+| Prop Name      | Type            | Default              | Description |
+|----------------|-----------------|----------------------|-------------|
+| `label`        | `string`        | `"Slide to confirm"` | Background text. |
+| `successLabel` | `string`        | `"Confirmed"`        | Text when confirmed. |
+| `onConfirm`    | `() => void`    | `()=>{}`             | Called on confirm (your API, navigate). |
+| `onReset`      | `() => void`    | `()=>{}`             | Called on reset. |
+| `resetDelay`   | `number \| null`| `null`               | Auto-reset after X ms. `null` stays confirmed. |
+| `allowReset`   | `boolean`       | `true`               | Shows ↻ button when `true`. |
+| `disabled`     | `boolean`       | `false`              | Disables dragging if `true`. |
+| `darkMode`     | `boolean`       | `false`              | Enables dark mode styling if `true`. |
+| `className`    | `string`        | `""`                 | Additional classes merged via `cn()`. |
+| `style`        | `CSSProperties` | `-`                  | Inline styles. |
+
+### Features
+- Drag with **Framer Motion** `drag="x"` and `useMotionValue`.
+- Responsive `w: min(280px,90vw)` with `h-14 sm:h-[60px]`.
+- No `alert` — delegate logic to `onConfirm`.
+- Location: `src/components/interactive/SwipeToConfirm.jsx`.

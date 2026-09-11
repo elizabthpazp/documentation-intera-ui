@@ -1,0 +1,64 @@
+---
+title: ImageCompare (Deslizador Antes/Después)
+description: Esta sección muestra una vista previa del componente ImageCompare.
+---
+
+En esta guía presentamos el componente `ImageCompare`, un deslizador antes/después con divisor arrastrable y `clip-path`.
+
+## Vista Previa
+
+<ImageComparePreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { ImageCompare } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <ImageCompare
+      before="https://picsum.photos/seed/before/800/500"
+      after="https://picsum.photos/seed/after/800/500"
+      beforeLabel="Before" afterLabel="After"
+      defaultPosition={50}
+      darkMode
+      className="max-w-2xl mx-auto"
+    />
+  );
+}
+// Arrastra en el handle o haz clic en cualquier punto + teclado ArrowLeft/Right (5%)
+// Usa clipPath inset(0 ${100-pos}% 0 0) -> imagen siempre a tamaño completo
+```
+
+## Detalles del Componente
+
+El componente `ImageCompare` consta de:
+- **Imagen posterior (after)** a tamaño completo como base.
+- **Imagen anterior (before)** recortada con `clipPath: inset(0 ${100-pos}% 0 0)`.
+- **Divisor** + **asa (handle)** arrastrable con eventos `pointer` y soporte de teclado.
+
+## Propiedades
+
+| Nombre de Prop  | Tipo     | Por Defecto                   | Descripción |
+|-------------------|----------|---------------------------------|-------------|
+| `before`          | `string` | `picsum/seed/before`            | URL de la imagen anterior. |
+| `after`           | `string` | `picsum/seed/after`             | URL de la imagen posterior. |
+| `beforeLabel`     | `string` | `"Before"`                      | Etiqueta para el antes. |
+| `afterLabel`      | `string` | `"After"`                       | Etiqueta para el después. |
+| `defaultPosition` | `number` | `50` (0-100)                    | Posición inicial del divisor en %. |
+| `darkMode`        | `boolean`| `false`                         | Activa el estilo en modo oscuro si es `true`. |
+| `className`       | `string` | `""`                            | Clases adicionales combinadas vía `cn()`. |
+| `style`           | `CSSProperties` | `-`                      | Estilos en línea. |
+
+Responsivo: `aspect-[16/10] w-full`, `touch-none`, `clipPath %`.
+
+### Características
+
+- Arrastre en el asa o **clic en cualquier punto** + **ArrowLeft/Right** (5%).
+- Sin distorsión — imagen siempre a tamaño completo vía clip.
+- Personalizable vía `className`/`style`.
+- Ubicación: `src/components/interactive/ImageCompare.jsx`.

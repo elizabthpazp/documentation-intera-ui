@@ -1,0 +1,57 @@
+---
+title: MagneticDock (macOS-Style Magnifying Dock)
+description: This section previews the MagneticDock component.
+---
+
+In this guide, we showcase the `MagneticDock` component, a macOS-style dock with magnification that follows the cursor.
+
+## Preview
+
+<MagneticDockPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { MagneticDock } from "@elizabthpazp/intera-ui";
+import { Home, Search, User, Settings } from "lucide-react";
+
+export default function Home() {
+  const items = [
+    { icon: <Home size={20} />, label: "Home", onClick: () => router.push("/") },
+    { icon: <Search size={20} />, label: "Search", onClick: () => {} },
+    { icon: <User size={20} />, label: "Profile", onClick: () => {} },
+    { icon: <Settings size={20} />, label: "Settings", onClick: () => {} },
+  ];
+
+  return <MagneticDock items={items} darkMode baseSize={44} magnification={72} className="my-4" />;
+}
+```
+
+## Component Details
+
+The `MagneticDock` component consists of:
+- A **horizontal dock** with `backdrop-blur` and rounded container.
+- **Magnification** of icons near the cursor using `useMotionValue` + `useSpring`.
+- **Tooltip labels** on hover with spring animation.
+
+## Props
+
+| Prop Name      | Type                                | Default | Description |
+|----------------|-------------------------------------|---------|-------------|
+| `items`        | `Array<{icon, label, onClick}>`     | `[]`    | Icons to display (use `lucide-react`). |
+| `distance`     | `number`                            | `150`   | Distance for magnification effect. |
+| `magnification`| `number`                            | `80`    | Maximum icon size when hovered. |
+| `baseSize`     | `number`                            | `40`    | Base icon size. |
+| `darkMode`     | `boolean`                           | `false` | Enables dark mode styling if `true`. |
+| `className`    | `string`                            | `""`    | Additional classes merged via `cn()`. |
+| `style`        | `CSSProperties`                     | `-`     | Inline styles. |
+
+### Features
+- Physics-based magnification with **Framer Motion** springs.
+- Responsive `h-14 sm:h-16` with `gap-2 sm:gap-4`.
+- Fully customizable via `className`/`style` via `cn()` (`src/lib/utils.js`).
+- Location: `src/components/interactive/MagneticDock.jsx`.

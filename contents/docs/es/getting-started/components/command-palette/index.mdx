@@ -1,0 +1,61 @@
+---
+title: CommandPalette (Paleta de Comandos ⌘K)
+description: Esta sección muestra una vista previa del componente CommandPalette.
+---
+
+En esta guía presentamos el componente `CommandPalette`, una paleta `⌘K` con búsqueda difusa (fuzzy search), navegación por teclado y animación fluida.
+
+## Vista Previa
+
+<CommandPalettePreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { CommandPalette } from "@elizabthpazp/intera-ui";
+import { Search, Sparkles } from "lucide-react";
+
+export default function Home() {
+  const items = [
+    { id:"theme", label:"Toggle Theme", icon:<Sparkles size={16}/>, shortcut:"⌘T", onSelect:()=>setDark(!dark) },
+    { id:"sheet", label:"Open Sheet", icon:<Search size={16}/>, onSelect:()=>setOpen(true) },
+  ];
+
+  return <CommandPalette items={items} darkMode placeholder="Type a command..." />;
+  // Controlado:
+  // <CommandPalette open={open} onOpenChange={setOpen} items={items} />
+  // Atajo: Ctrl/Cmd+K y ESC ya vienen incluidos
+}
+```
+
+## Detalles del Componente
+
+El componente `CommandPalette` consta de:
+- **Botón disparador** (cuando no está controlado) con pista `⌘K`.
+- **Modal** con `fixed inset-0` + `AnimatePresence` y campo de búsqueda.
+- **Filtro difuso** sobre `label`/`id` y **navegación por teclado** (`ArrowUp/Down`, `Enter`).
+
+## Propiedades
+
+| Nombre de Prop | Tipo                                         | Por Defecto            | Descripción |
+|----------------|----------------------------------------------|------------------------|-------------|
+| `items`        | `Array<{id,label,icon?,shortcut?,onSelect}>` | `[]`                   | Lista de comandos. |
+| `open`         | `boolean`                                    | `undefined`            | Estado abierto controlado. |
+| `onOpenChange` | `(v)=>{}`                                    | `()=>{}`               | Se ejecuta cuando cambia el estado abierto. |
+| `placeholder`  | `string`                                     | `"Type a command..."`  | Marcador del campo de entrada. |
+| `darkMode`     | `boolean`                                    | `false`                | Activa el estilo en modo oscuro si es `true`. |
+| `className`    | `string`                                     | `""`                   | Clases adicionales combinadas vía `cn()`. |
+| `style`        | `CSSProperties`                              | `-`                    | Estilos en línea. |
+
+Responsivo: `max-w-lg w-full`, `hidden sm:flex` para atajos.
+
+### Características
+
+- Manejo integrado de **Ctrl/Cmd+K** y **ESC**.
+- Transformación vía **Framer Motion** `AnimatePresence`.
+- Personalizable vía `className`/`style` con `cn()` (`src/lib/utils.js`).
+- Ubicación: `src/components/interactive/CommandPalette.jsx`.

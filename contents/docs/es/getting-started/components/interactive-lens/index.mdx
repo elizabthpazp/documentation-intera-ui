@@ -1,0 +1,57 @@
+---
+title: InteractiveLens (Lente Interactiva)
+description: Esta sección muestra una vista previa del componente InteractiveLens.
+---
+
+En esta guía presentamos el componente `InteractiveLens`, una lente que revela una capa nítida sobre un fondo borroso en escala de grises.
+
+## Vista Previa
+
+<InteractiveLensPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { InteractiveLens } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <InteractiveLens 
+      size={240}
+      darkMode
+      background={<div className="bg-zinc-900 text-zinc-800 text-6xl font-black">DARK</div>}
+    >
+      <div className="bg-white text-black text-6xl font-black">LIGHT</div>
+    </InteractiveLens>
+  );
+}
+```
+
+## Detalles del Componente
+
+El componente `InteractiveLens` consta de:
+- Una **capa de fondo** (`opacity-40 grayscale`) — por defecto usa `children` si no hay `background`.
+- Una **capa de máscara** con círculo en `radial-gradient` que sigue al cursor/tacto.
+- **Lente** con transición de resorte (`damping:20, stiffness:300`).
+
+## Propiedades
+
+| Nombre de Prop | Tipo            | Por Defecto | Descripción |
+|--------------|-----------------|------------|-------------|
+| `children`   | `ReactNode`     | `-`        | Contenido nítido revelado por la lente. |
+| `background` | `ReactNode`     | `children` | Contenido de fondo borroso. |
+| `size`       | `number`        | `200`      | Diámetro de la lente en px (responsivo `min(size,40vw)`). |
+| `darkMode`   | `boolean`       | `false`    | Activa el estilo en modo oscuro si es `true`. |
+| `className`  | `string`        | `""`       | Clases adicionales combinadas vía `cn()`. |
+| `style`      | `CSSProperties` | `-`        | Estilos en línea. |
+
+### Características
+
+- Sigue al **ratón** y al **tacto** con gradiente radial `maskImage`.
+- Tamaño `size` limitado a `40vw` en móvil, `touch-none`.
+- Personalizable vía `className`/`style`.
+- Ubicación: `src/components/interactive/InteractiveLens.jsx`.

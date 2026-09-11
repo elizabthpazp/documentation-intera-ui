@@ -1,0 +1,71 @@
+---
+title: Estructura del Proyecto
+description: Esta sección ofrece una visión general de la estructura del proyecto para InteraUI.
+---
+
+## Resumen de la Estructura del Proyecto
+
+El proyecto `InteraUI` es una librería de componentes diseñada para componentes de interfaz reutilizables en React. La siguiente estructura garantiza mantenibilidad y escalabilidad.
+
+### src
+
+Este es el directorio fuente principal que contiene todos los componentes y estilos.
+
+<Files
+  items={[
+    {
+      type: "folder",
+      name: "src",
+      isOpen: true,
+      children: [
+        {
+          type: "folder",
+          name: "components",
+          isOpen: true,
+          children: [
+            {
+              type: "folder",
+              name: "buttons",
+              isOpen: true,
+              children: [{ type: "file", name: "Button.js" }],
+            },
+            {
+              type: "folder",
+              name: "animations",
+              isOpen: true,
+              children: [{ type: "file", name: "Tree.js" }],
+            },
+          ],
+        },
+        {
+          type: "folder",
+          name: "styles",
+          isOpen: true,
+          children: [],
+        },
+      ],
+    },
+  ]}
+/>
+
+### Archivos Raíz
+
+El directorio raíz contiene archivos esenciales de configuración del proyecto.
+
+<Files
+  items={[
+    { type: "file", name: ".gitignore" },
+    { type: "file", name: "package.json" },
+    { type: "file", name: "README.md" },
+    { type: "file", name: "tsconfig.json" },
+  ]}
+/>
+
+### Adicional
+
+- **`package.json`**: Gestiona las dependencias y los scripts para compilar y ejecutar el proyecto.
+- **`tsconfig.json`**: Archivo de configuración de TypeScript (si aplica).
+- **`README.md`**: Proporciona documentación y guías de uso.
+- **`.gitignore`**: Especifica los archivos y directorios que Git debe ignorar.
+
+Esta estructura asegura un enfoque modular y escalable para construir componentes React reutilizables.

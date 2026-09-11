@@ -1,0 +1,52 @@
+---
+title: InteractiveAccordion (Acordeón Interactivo)
+description: Esta sección muestra una vista previa del componente InteractiveAccordion.
+---
+
+En esta guía presentamos el componente `InteractiveAccordion`, un acordeón con animación de resorte e icono `ChevronDown`.
+
+## Vista Previa
+
+<InteractiveAccordionPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { InteractiveAccordion } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  const items = [
+    { id:"1", title:"Arquitectura", content:"React 19 + Framer Motion" },
+    { id:"2", title:"Diseño", content:"Minimalista..." },
+  ];
+
+  return <InteractiveAccordion items={items} darkMode />;
+}
+```
+
+## Detalles del Componente
+
+El componente `InteractiveAccordion` consta de:
+- **Tarjetas** con `rounded-2xl border` y estado único `expandedId` (solo una a la vez).
+- **Botón de cabecera** con título y `ChevronDown` que rota `180deg` al expandirse.
+- **Contenido** con `AnimatePresence` y altura con resorte (`stiffness:300, damping:30`).
+
+## Propiedades
+
+| Nombre de Prop | Tipo                              | Por Defecto | Descripción |
+|-------------|-----------------------------------|---------|-------------|
+| `items`     | `Array<{id, title, content}>`     | `[]`    | Elementos del acordeón. |
+| `darkMode`  | `boolean`                         | `false` | Activa el estilo en modo oscuro si es `true`. |
+| `className` | `string`                          | `""`    | Clases adicionales combinadas vía `cn()`. |
+| `style`     | `CSSProperties`                   | `-`     | Estilos en línea. |
+
+### Características
+
+- Física de resorte vía **Framer Motion** + **Lucide** `ChevronDown`.
+- Responsivo `max-w-md w-full` con `gap-3`.
+- Personalizable vía `className`/`style` con `cn()`.
+- Ubicación: `src/components/interactive/InteractiveAccordion.jsx`.

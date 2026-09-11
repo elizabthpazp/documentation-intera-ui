@@ -1,0 +1,51 @@
+---
+title: ElasticSlider (Deslizador con Pulgar Elástico)
+description: Esta sección muestra una vista previa del componente ElasticSlider.
+---
+
+En esta guía presentamos el componente `ElasticSlider`, un deslizador numérico con física elástica en el pulgar.
+
+## Vista Previa
+
+<ElasticSliderPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { ElasticSlider } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  const [price, setPrice] = useState(80);
+  return <ElasticSlider min={0} max={200} defaultValue={80} onChange={setPrice} darkMode />;
+}
+```
+
+## Detalles del Componente
+
+El componente `ElasticSlider` consta de:
+- Una **pista** con progreso de relleno y **pulgar** con resorte (`stiffness: 400, damping: 30`).
+- **Arrastra o haz clic** en la pista para establecer el valor.
+- Muestra el valor actual con pulgar animado.
+
+## Propiedades
+
+| Nombre de Prop | Tipo       | Por Defecto | Descripción |
+|----------------|------------|---------|-------------|
+| `min`          | `number`   | `0`     | Valor mínimo. |
+| `max`          | `number`   | `100`   | Valor máximo. |
+| `defaultValue` | `number`   | `50`    | Valor inicial. |
+| `onChange`     | `function` | `(v)=>{}` | Se ejecuta con el nuevo valor al cambiar. |
+| `darkMode`     | `boolean`  | `false` | Activa el estilo en modo oscuro si es `true`. |
+| `className`    | `string`   | `""`    | Clases adicionales combinadas vía `cn()`. |
+| `style`        | `CSSProperties` | `-` | Estilos en línea. |
+
+### Características
+
+- Arrastre elástico vía **Framer Motion** `useSpring`.
+- Responsivo `max-w-[260px]` con respaldo `w-full`.
+- Personalizable vía `className`/`style` con `cn()`.
+- Ubicación: `src/components/interactive/ElasticSlider.jsx`.

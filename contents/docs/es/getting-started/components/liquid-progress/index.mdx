@@ -1,0 +1,56 @@
+---
+title: LiquidProgress (Progreso Líquido Orbital)
+description: Esta sección muestra una vista previa del componente LiquidProgress.
+---
+
+En esta guía presentamos el componente `LiquidProgress`, un orbe líquido con arrastre vertical para cambiar el valor.
+
+## Vista Previa
+
+<LiquidProgressPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { LiquidProgress } from "@elizabthpazp/intera-ui";
+import { useState } from "react";
+
+export default function Home() {
+  const [val, setVal] = useState(64);
+  return <LiquidProgress value={val} onChange={setVal} size={160} label="Upload" darkMode interactive />;
+}
+// Clic o arrastre vertical dentro del orbe, ArrowUp/Down (+-5), touchAction none + overscroll-contain
+```
+
+## Detalles del Componente
+
+El componente `LiquidProgress` consta de:
+- **Orbe** (`border-radius:50%`) con `overflow-hidden` y onda líquida (`motion.div` y).
+- **Valor** `0-100` que controla la altura de la onda + `text-3xl`.
+- **Interacción**: clic/arrastre vertical + `ArrowUp/Down` (±5) + `touchAction: none`.
+
+## Propiedades
+
+| Nombre de Prop | Tipo       | Por Defecto | Descripción |
+|---------------|------------|------------|-------------|
+| `value`       | `number`   | `60` (0-100) | Valor de progreso. |
+| `size`        | `number`   | `160`      | Diámetro en px (`min(160px,70vw)` responsivo). |
+| `label`       | `string`   | `"Progress"` | Etiqueta debajo del orbe. |
+| `interactive` | `boolean`  | `true`     | Activa arrastre/clic si es `true`. |
+| `onChange`    | `function` | `(v)=>{}`  | Se ejecuta con el nuevo valor. |
+| `darkMode`    | `boolean`  | `false`    | Activa el estilo en modo oscuro si es `true`. |
+| `className`   | `string`   | `""`       | Clases adicionales combinadas vía `cn()`. |
+| `style`       | `CSSProperties` | `-`   | Estilos en línea. |
+
+Responsivo: `width: min(160px,70vw)`, `text-2xl sm:text-3xl`, sin salto (`span` estático, no `key={pct}`).
+
+### Características
+
+- Onda líquida vía **Framer Motion** `motion.div` con transformación `y`.
+- `overscroll-contain` + `touchAction: none` para un arrastre móvil fluido.
+- Personalizable vía `className`/`style`.
+- Ubicación: `src/components/interactive/LiquidProgress.jsx`.

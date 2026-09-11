@@ -1,0 +1,53 @@
+---
+title: MagneticButton (Botón Magnético Elástico)
+description: Esta sección muestra una vista previa del componente MagneticButton.
+---
+
+En esta guía presentamos el componente `MagneticButton`, un botón que sigue al cursor con física de resorte elástica.
+
+## Vista Previa
+
+<MagneticButtonPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { MagneticButton } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <MagneticButton strength={0.6} darkMode onClick={handleAction} className="bg-[#ff4149] hover:bg-[#ff6b6b]">
+      EXPLORAR AHORA
+    </MagneticButton>
+  );
+}
+```
+
+## Detalles del Componente
+
+El componente `MagneticButton` consta de:
+- Un **botón** que se desplaza hacia el cursor dentro de sus límites.
+- **Animación de resorte** con `stiffness: 150, damping: 15`.
+- Un `span` interior con sutil efecto parallax.
+
+## Propiedades
+
+| Nombre de Prop | Tipo       | Por Defecto | Descripción |
+|-------------|------------|---------|-------------|
+| `children`  | `ReactNode`| `-`     | Texto/contenido del botón. |
+| `onClick`   | `function` | `()=>{}`| Se ejecuta al hacer clic en el botón. |
+| `strength`  | `number`   | `0.5`   | Fuerza magnética de `0` a `1`. |
+| `darkMode`  | `boolean`  | `false` | Activa el estilo en modo oscuro si es `true`. |
+| `className` | `string`   | `""`    | Clases adicionales combinadas vía `cn()`. |
+| `style`     | `CSSProperties` | `-` | Estilos en línea. |
+
+### Características
+
+- Usa **Framer Motion** `motion.button` con resorte.
+- `active:scale-95` para retroalimentación al presionar.
+- Personalizable vía `className`/`style` con `cn()` (`src/lib/utils.js`).
+- Ubicación: `src/components/interactive/MagneticButton.jsx`.

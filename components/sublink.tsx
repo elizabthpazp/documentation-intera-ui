@@ -1,3 +1,5 @@
+"use client";
+
 import { EachRoute } from "@/lib/routes-config";
 import Anchor from "./anchor";
 import {
@@ -10,6 +12,23 @@ import { SheetClose } from "@/components/ui/sheet";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { useLanguage } from "@/components/contexts/language-provider";
+
+function translateRouteTitle(href: string, t: any): string | null {
+  const clean = href.replace(/^\/(es|en)/, "").replace(/^\/docs/, "");
+  // after stripping locale and docs, href is like /getting-started or /getting-started/introduction
+  // but for nested we need to handle full path without locale
+  const normalized = clean.startsWith("/") ? clean : `/${clean}`;
+  if (normalized === "/getting-started") return t.routes.gettingStarted;
+  if (normalized === "/getting-started/introduction") return t.routes.introduction;
+  if (normalized === "/getting-started/installation") return t.routes.installation;
+  if (normalized === "/getting-started/quick-start-guide") return t.routes.quickStart;
+  if (normalized === "/getting-started/project-structure") return t.routes.projectStructure;
+  if (normalized === "/getting-started/components") return t.routes.components;
+  // also handle href that already is just /getting-started (without docs prefix) for top level
+  if (href.endsWith("/getting-started")) return t.routes.gettingStarted;
+  return null;
+}
 
 export default function SubLink({
   title,
@@ -22,6 +41,9 @@ export default function SubLink({
 }: EachRoute & { level: number; isSheet: boolean }) {
   const path = usePathname();
   const [isOpen, setIsOpen] = useState(true);
+  const { t } = useLanguage();
+  const displayTitle = translateRouteTitle(href, t) ?? title;
+  const displayTag = tag ? (tag === "New" || tag === "Nuevo" ? t.common.new : tag) : undefined;
 
   useEffect(() => {
     if (path == href || path.includes(href)) setIsOpen(true);
@@ -32,10 +54,10 @@ export default function SubLink({
       activeClassName="text-primary dark:font-medium font-semibold"
       href={href}
     >
-      {title}
-      {tag && (
+      {displayTitle}
+      {displayTag && (
         <span className="dark:bg-blue-700 bg-blue-500 rounded-md px-1.5 py-0.5 mx-2 text-xs text-white !font-normal">
-          {tag}
+          {displayTag}
         </span>
       )}
     </Anchor>
@@ -49,10 +71,10 @@ export default function SubLink({
     )
   ) : (
     <h4 className="font-medium sm:text-sm text-primary">
-      {title}
-      {tag && (
+      {displayTitle}
+      {displayTag && (
         <span className="dark:bg-blue-700 bg-blue-500 rounded-md px-1.5 py-0.5 mx-2 text-xs text-white !font-normal">
-          {tag}
+          {displayTag}
         </span>
       )}
     </h4>

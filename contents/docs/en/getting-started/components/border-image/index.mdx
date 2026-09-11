@@ -1,0 +1,59 @@
+---
+title: BorderImage (Animated Border Image)
+description: This section previews the BorderImage component.
+---
+
+In this guide, we showcase the `BorderImage` component, a circular image with animated gradient border. Refactored to work without `next/image` — compatible with Vite, CRA and Next.js.
+
+## Preview
+
+<BorderImagePreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { BorderImage } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <>
+      <BorderImage image="/img/cat.png" size={140} darkMode alt="Avatar" className="mx-auto" />
+      {/* Fallback placeholder when no image is provided */}
+      <BorderImage darkMode />
+    </>
+  );
+}
+```
+
+## Component Details
+
+The `BorderImage` component consists of:
+- A **circular image** with gradient border and blurred glow.
+- Automatic **fallback** to `/img/image.jpg`, then CDN `placehold.co`, then inline data URI.
+- Uses native `img` tag — no `next/image` dependency.
+
+## Props
+
+| Prop Name   | Type              | Default            | Description |
+|-------------|-------------------|--------------------|-------------|
+| `image`     | `string \| null`  | `null`             | Image URL. Falls back to `/img/image.jpg` + CDN. |
+| `darkMode`  | `boolean`         | `false`            | Enables dark mode styling if `true`. |
+| `size`      | `number`          | `112`              | Diameter in px (`w-28` = 112). Responsive `min(size,30vw)`. |
+| `alt`       | `string`          | `"Animated Image"` | Alt text for the image. |
+| `className` | `string`          | `""`               | Additional classes merged via `cn()` (`tailwind-merge`). |
+| `style`     | `CSSProperties`   | `-`                | Inline styles. |
+
+These props allow full customization while keeping the component lightweight.
+
+### Features
+- Works in **Vite/CRA/Next** — no `next/image` required.
+- Robust **fallback** chain for missing images.
+- Styled with **Tailwind CSS** and **Framer Motion** glow.
+- 100% customizable via `className`/`style` with `cn()` (`src/lib/utils.js`).
+- Used internally by `CardProfile` (`src/components/cards/card-profile.jsx`).
+
+This component adds a polished animated avatar with zero configuration.

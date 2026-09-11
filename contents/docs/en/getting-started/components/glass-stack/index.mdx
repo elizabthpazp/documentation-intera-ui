@@ -1,0 +1,52 @@
+---
+title: GlassStack (3D Glassmorphism Stack)
+description: This section previews the GlassStack component.
+---
+
+In this guide, we showcase the `GlassStack` component, a 3D stack of cards with glassmorphism — click to rotate.
+
+## Preview
+
+<GlassStackPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { GlassStack } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  const items = [
+    { title: "Interacción Dinámica", content: "Física fluida..." },
+    { title: "Estética Moderna", content: "Glassmorphism..." },
+    { title: "Customizable", content: "Control total..." },
+  ];
+
+  return <GlassStack items={items} darkMode className="h-[500px]" />;
+}
+```
+
+## Component Details
+
+The `GlassStack` component consists of:
+- A **stack of cards** with `backdrop-blur-xl` and depth via `scale`/`y`/`z`.
+- **AnimatePresence** for enter/exit with spring.
+- Click any card or stack to **rotate** to next card.
+
+## Props
+
+| Prop Name   | Type                        | Default | Description |
+|-------------|-----------------------------|---------|-------------|
+| `items`     | `Array<{title, content}>`   | `[]`    | Cards to display. |
+| `darkMode`  | `boolean`                   | `false` | Enables dark mode styling if `true`. |
+| `className` | `string`                    | `""`    | Additional classes merged via `cn()`. |
+| `style`     | `CSSProperties`             | `-`     | Inline styles. |
+
+### Features
+- 3D transforms with `preserve-3d` and `perspective-1000`.
+- Responsive `h-[320px] sm:h-[400px]` with `w-56 sm:w-64`.
+- Styled with **Tailwind CSS** + **Framer Motion**.
+- Location: `src/components/interactive/GlassStack.jsx`.

@@ -1,0 +1,51 @@
+---
+title: InteractiveAccordion (Spring Accordion)
+description: This section previews the InteractiveAccordion component.
+---
+
+In this guide, we showcase the `InteractiveAccordion` component, an accordion with spring animation and `ChevronDown`.
+
+## Preview
+
+<InteractiveAccordionPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { InteractiveAccordion } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  const items = [
+    { id:"1", title:"Arquitectura", content:"React 19 + Framer Motion" },
+    { id:"2", title:"Diseño", content:"Minimalista..." },
+  ];
+
+  return <InteractiveAccordion items={items} darkMode />;
+}
+```
+
+## Component Details
+
+The `InteractiveAccordion` component consists of:
+- **Cards** with `rounded-2xl border` and single `expandedId` state (one at a time).
+- **Header button** with title and `ChevronDown` rotating `180deg` on expand.
+- **Content** with `AnimatePresence` height spring (`stiffness:300, damping:30`).
+
+## Props
+
+| Prop Name   | Type                              | Default | Description |
+|-------------|-----------------------------------|---------|-------------|
+| `items`     | `Array<{id, title, content}>`     | `[]`    | Accordion items. |
+| `darkMode`  | `boolean`                         | `false` | Enables dark mode styling if `true`. |
+| `className` | `string`                          | `""`    | Additional classes merged via `cn()`. |
+| `style`     | `CSSProperties`                   | `-`     | Inline styles. |
+
+### Features
+- Spring physics via **Framer Motion** + **Lucide** `ChevronDown`.
+- Responsive `max-w-md w-full` with `gap-3`.
+- Customizable via `className`/`style` with `cn()`.
+- Location: `src/components/interactive/InteractiveAccordion.jsx`.

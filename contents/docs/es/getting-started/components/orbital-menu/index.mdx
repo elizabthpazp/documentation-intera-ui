@@ -1,0 +1,60 @@
+---
+title: OrbitalMenu (Menú Radial Orbital)
+description: Esta sección muestra una vista previa del componente OrbitalMenu.
+---
+
+En esta guía presentamos el componente `OrbitalMenu`, un botón central que se expande en una órbita circular.
+
+## Vista Previa
+
+<OrbitalMenuPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { OrbitalMenu } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <OrbitalMenu
+      radius={90}
+      darkMode
+      items={[
+        { id:"1", icon:"✦", label:"Design", color:"from-violet-500 to-purple-600", onClick:()=>{} },
+      ]}
+    />
+  );
+}
+// Centro fijo con x:"-50%" y:"-50%" vía Framer (no Tailwind translate) para no saltar
+// Items con marginLeft:-28 + x/y orbital, tooltip z-50 por encima del anillo z-0
+```
+
+## Detalles del Componente
+
+El componente `OrbitalMenu` consta de:
+- **Botón central** (`56px`) con rotación `Plus`/`X` con resorte.
+- **Elementos orbitales** posicionados vía `cos`/`sin * radius` con `AnimatePresence`.
+- **Tooltips** `z-50` por encima del anillo `z-0`.
+
+## Propiedades
+
+| Nombre de Prop | Tipo                                   | Por Defecto      | Descripción |
+|-------------|----------------------------------------|--------------|-------------|
+| `items`     | `Array<{id,icon,label,onClick,color?}>`| 4 por defecto   | Elementos del menú. |
+| `radius`    | `number`                               | `90`         | Radio de la órbita (responsivo `min(radius,28vw)`). |
+| `darkMode`  | `boolean`                              | `false`      | Activa el estilo en modo oscuro si es `true`. |
+| `className` | `string`                               | `""`         | Clases adicionales combinadas vía `cn()`. |
+| `style`     | `CSSProperties`                        | `-`          | Estilos en línea. |
+
+Responsivo: `responsiveRadius = min(radius,28vw)`, `max-w-[90vw]`, `size 56`.
+
+### Características
+
+- Cálculo orbital con resorte de **Framer Motion** (`damping:18, stiffness:260`).
+- Centro fijo vía `x:"-50%" y:"-50%"` (Framer, no Tailwind) para evitar salto.
+- Personalizable vía `className`/`style`.
+- Ubicación: `src/components/interactive/OrbitalMenu.jsx`.

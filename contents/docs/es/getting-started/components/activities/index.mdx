@@ -1,0 +1,65 @@
+---
+title: Activities (Lista Expandible de Actividades)
+description: Esta sección muestra una vista previa del componente Activities.
+---
+
+En esta guía presentamos el componente `Activities`, diseñado para mostrar una lista de actividades, notificaciones o cualquier otro elemento estructurado. Inicialmente, la lista aparece colapsada en estilo acordeón y se expande al hacer clic en el botón.
+
+## Vista Previa
+
+<ActivitiesC>
+</ActivitiesC>
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { Activities } from "@elizabthpazp/intera-ui"; 
+
+export default function Home() {  
+  const activities = [
+    { name: "Work hard", location: "At work", date: "1 April" },
+    { name: "Study English", location: "At school", date: "2 April" },
+    { name: "Make dinner", location: "At home", date: "3 April" },
+  ];
+
+  return ( 
+      <Activities activities={activities} darkMode={true}  />    
+  );
+}
+```
+
+## Detalles del Componente
+
+El componente `Activities` consta de:
+- Un **botón principal** para expandir o colapsar la lista de actividades.
+- Una **lista de tarjetas de actividad**, cada una con:
+  - Un **nombre** (título de la actividad).
+  - Una **ubicación** (dónde tiene lugar la actividad).
+  - Una **fecha** (cuándo ocurre la actividad).
+- **Soporte para modo oscuro** para consistencia en el estilo.
+
+## Propiedades
+
+El componente `Activities` acepta varias props para permitir la personalización:
+
+| Nombre de Prop   | Tipo       | Descripción |
+|---------------|-----------|-------------|
+| `darkMode`    | `boolean` | Activa el estilo en modo oscuro si es `true`. |
+| `activities`  | `array`   | Lista de objetos de actividad `{ name, location, date }`. |
+| `primaryButton` | `string`  | Texto del botón cuando la lista está colapsada. |
+| `secondaryButton` | `string`  | Texto del botón cuando la lista está expandida. |
+
+Estas props permiten una personalización flexible, haciendo que el componente sea adecuado para diferentes casos de uso.
+
+### Características
+
+- Soporta **funcionalidad de expandir/colapsar**.
+- Usa **Tailwind CSS** para el estilado.
+- Diseño responsivo para diferentes tamaños de pantalla.
+- Puede usarse para notificaciones, seguimiento de tareas o listado de eventos.
+
+Este componente mejora la experiencia del usuario al proporcionar una forma compacta y expandible de mostrar una lista de actividades.

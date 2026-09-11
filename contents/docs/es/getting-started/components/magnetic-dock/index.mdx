@@ -1,0 +1,58 @@
+---
+title: MagneticDock (Dock Magnético estilo macOS)
+description: Esta sección muestra una vista previa del componente MagneticDock.
+---
+
+En esta guía presentamos el componente `MagneticDock`, un dock estilo macOS con magnificación que sigue al cursor.
+
+## Vista Previa
+
+<MagneticDockPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { MagneticDock } from "@elizabthpazp/intera-ui";
+import { Home, Search, User, Settings } from "lucide-react";
+
+export default function Home() {
+  const items = [
+    { icon: <Home size={20} />, label: "Home", onClick: () => router.push("/") },
+    { icon: <Search size={20} />, label: "Search", onClick: () => {} },
+    { icon: <User size={20} />, label: "Profile", onClick: () => {} },
+    { icon: <Settings size={20} />, label: "Settings", onClick: () => {} },
+  ];
+
+  return <MagneticDock items={items} darkMode baseSize={44} magnification={72} className="my-4" />;
+}
+```
+
+## Detalles del Componente
+
+El componente `MagneticDock` consta de:
+- Un **dock horizontal** con `backdrop-blur` y contenedor redondeado.
+- **Magnificación** de los iconos cercanos al cursor usando `useMotionValue` + `useSpring`.
+- **Etiquetas emergentes (tooltips)** al pasar el ratón con animación de resorte (spring).
+
+## Propiedades
+
+| Nombre de Prop | Tipo                                | Por Defecto | Descripción |
+|----------------|-------------------------------------|---------|-------------|
+| `items`        | `Array<{icon, label, onClick}>`     | `[]`    | Iconos a mostrar (usa `lucide-react`). |
+| `distance`     | `number`                            | `150`   | Distancia para el efecto de magnificación. |
+| `magnification`| `number`                            | `80`    | Tamaño máximo del icono al pasar el ratón. |
+| `baseSize`     | `number`                            | `40`    | Tamaño base del icono. |
+| `darkMode`     | `boolean`                           | `false` | Activa el estilo en modo oscuro si es `true`. |
+| `className`    | `string`                            | `""`    | Clases adicionales combinadas vía `cn()`. |
+| `style`        | `CSSProperties`                     | `-`     | Estilos en línea. |
+
+### Características
+
+- Magnificación con física de resortes mediante **Framer Motion**.
+- Responsivo `h-14 sm:h-16` con `gap-2 sm:gap-4`.
+- Totalmente personalizable vía `className`/`style` con `cn()` (`src/lib/utils.js`).
+- Ubicación: `src/components/interactive/MagneticDock.jsx`.

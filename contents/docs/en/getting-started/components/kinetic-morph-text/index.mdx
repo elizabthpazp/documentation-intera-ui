@@ -1,0 +1,59 @@
+---
+title: KineticMorphText (Kinetic Morphing Text)
+description: This section previews the KineticMorphText component.
+---
+
+In this guide, we showcase the `KineticMorphText` component, kinetic text that morphs between phrases.
+
+## Preview
+
+<KineticMorphTextPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { KineticMorphText } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <KineticMorphText
+      texts={["InteraUI","Interactive","Modern","Delightful"]}
+      interval={2200}
+      variant="blur"
+      darkMode
+      className="py-8"
+    />
+  );
+}
+// Dots clickeables para cambiar manual
+```
+
+## Component Details
+
+The `KineticMorphText` component consists of:
+- A **phrase rotator** with `setInterval` and `AnimatePresence mode="wait"`.
+- **Variants**: `blur` (blur+y), `slide` (x), `scale`.
+- **Dots** for manual selection (`active` state).
+
+## Props
+
+| Prop Name   | Type       | Default                          | Description |
+|-------------|------------|----------------------------------|-------------|
+| `texts`     | `string[]` | `["InteraUI",...]`               | Phrases to morph. |
+| `interval`  | `number`   | `2500` ms                        | Time between changes. |
+| `variant`   | `string`   | `"blur"` (`blur`/`slide`/`scale`) | Animation variant. |
+| `darkMode`  | `boolean`  | `false`                          | Enables dark mode styling if `true`. |
+| `className` | `string`   | `""`                             | Additional classes merged via `cn()`. |
+| `style`     | `CSSProperties` | `-`                          | Inline styles. |
+
+Responsive: `text-3xl sm:text-4xl md:text-6xl`, `whitespace-normal sm:whitespace-nowrap`, `h-16 sm:h-20`.
+
+### Features
+- Morph via **Framer Motion** `AnimatePresence`.
+- Clickable dots for manual control.
+- Customizable via `className`/`style`.
+- Location: `src/components/interactive/KineticMorphText.jsx`.

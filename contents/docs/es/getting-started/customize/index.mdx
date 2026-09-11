@@ -1,0 +1,93 @@
+---
+title: Personalizar
+description: Esta guía proporciona instrucciones para personalizar nuestra aplicación.
+---
+
+## Opciones de Markdown
+
+Para personalizar el análisis de Markdown, ve a `@lib/markdown.ts` y localiza la función `parseMdx`. Puedes añadir tus plugins deseados en `mdxOptions`. Aquí tienes un ejemplo:
+
+```ts:lib/markdown.ts
+async function parseMdx<Frontmatter>(rawMdx: string) {
+    return await compileMDX<Frontmatter>({
+        source: rawMdx,
+        options: {
+            parseFrontmatter: true,
+            mdxOptions: {
+                // Add your plugins here
+                rehypePlugins: [Shiki],
+                remarkPlugins: [remarkGfm],
+            },
+        },
+        components,
+    });
+}
+```
+
+## Fuentes
+
+Actualmente, este proyecto usa la fuente `Space_Grotesk`. Si quieres usar otras fuentes, puedes cambiar la configuración en el layout principal como se muestra a continuación:
+
+### Google Fonts
+
+Para usar una fuente de Google, importa la fuente deseada desde `next/font/google`, inicialízala con opciones y aplica la variable al `body`:
+
+```tsx:app/layout.tsx
+import { Space_Grotesk } from "next/font/google";
+
+const fontSans = Space_Grotesk({
+    display: "swap",
+    variable: "--font-regular",
+    weight: "400",
+    subsets: ["latin"],
+});
+
+export default function RootLayout({ children }) {
+    return (
+        <html lang="en">
+            <body className={`${fontSans.variable} font-regular`}>
+                {children}
+            </body>
+        </html>
+    );
+}
+```
+
+### Fuentes Locales
+
+Para usar una fuente local, necesitas usar el cargador de fuentes locales de Next.js. Pasa las opciones y aplícalas al `body`:
+
+```tsx:app/layout.tsx
+import localFont from "next/font/local";
+
+const geistSans = localFont({
+    src: "./fonts/GeistVF.woff",
+    variable: "--font-regular",
+    weight: "100 900",
+});
+
+export default function RootLayout({ children }) {
+    return (
+        <html lang="en">
+            <body className={`${geistSans.variable} font-regular`}>
+                {children}
+            </body>
+        </html>
+    );
+}
+```
+
+Para ambas opciones, asegúrate de añadir la variable a `tailwind.config.ts`:
+
+```ts:tailwind.config.ts
+{
+    // ...
+    extend: {
+        fontFamily: {
+            regular: ["var(--font-regular)"],
+        },
+    }
+}
+```
+
+Para temas y colores, consulta la [sección de Temas](/docs/getting-started/themes)

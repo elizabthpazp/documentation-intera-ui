@@ -1,0 +1,45 @@
+---
+title: Note (Nota)
+description: Esta sección muestra una vista previa del componente Note.
+---
+
+El componente `Note` te permite mostrar diferentes tipos de mensajes como notas generales, advertencias o notificaciones de éxito. Cada tipo está estilizado de forma correspondiente, proporcionando una pista visual clara al usuario.
+
+## Vista Previa
+
+<Note type="note" title="Nota">
+  Esta es una nota general para transmitir información al usuario.
+</Note>
+<Note type="danger" title="Peligro">
+  Esta es una alerta de peligro para notificar al usuario de un problema crítico.
+</Note>
+<Note type="warning" title="Advertencia">
+  Esta es una alerta de advertencia para problemas que requieren atención.
+</Note>
+<Note type="success" title="Éxito">
+  Este es un mensaje de éxito para informar al usuario de acciones completadas con éxito.
+</Note>
+
+## Propiedades
+
+| Prop    | Tipo                           | Por Defecto | Descripción                                |
+|---------|--------------------------------|---------|--------------------------------------------|
+| `title` | `string`                       | "Note"  | Establece el título de la nota.                |
+| `type`  | `"note"`, `"danger"`, `"warning"`, `"success"` | "note"  | Determina el estilo visual de la nota.   |
+
+## Código
+
+```jsx
+<Note type="note" title="Note">
+  This is a general note to convey information to the user.
+</Note>
+<Note type="danger" title="Danger">
+  This is a danger alert to notify the user of a critical issue.
+</Note>
+<Note type="warning" title="Warning">
+  This is a warning alert for issues that require attention.
+</Note>
+<Note type="success" title="Success">
+  This is a success message to inform the user of successful actions.
+</Note>
+```

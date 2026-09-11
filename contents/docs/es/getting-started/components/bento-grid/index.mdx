@@ -1,0 +1,56 @@
+---
+title: BentoGrid (Cuadrícula Bento Arrastrable)
+description: Esta sección muestra una vista previa del componente BentoGrid.
+---
+
+En esta guía presentamos el componente `BentoGrid`, una cuadrícula estilo bento con tarjetas arrastrables, animación con resorte y reordenamiento automático.
+
+## Vista Previa
+
+<BentoGridPreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { BentoGrid } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  const items = [
+    { id:"1", title:"Revenue", content:"$42k", colSpan:"sm:col-span-2", color:"from-violet-500 to-purple-600" },
+    { id:"2", title:"Inbox", content:"12 new", rowSpan:"sm:row-span-2", color:"from-blue-500 to-cyan-500" },
+  ];
+
+  return <BentoGrid items={items} darkMode draggable />;
+}
+// Arrastre libre con dragElastic 0.4, al soltar busca el [data-bento-id] más cercano y hace splice para reordenar
+```
+
+## Detalles del Componente
+
+El componente `BentoGrid` consta de:
+- **Cuadrícula** `grid-cols-1 sm:grid-cols-3` con `auto-rows-[120px] sm:140px`.
+- **Tarjetas** con `layout`, `drag` elástico `0.4`, superposición degradada.
+- **Reordenamiento** en `dragEnd` vía `document.elementFromPoint` + `[data-bento-id]`.
+
+## Propiedades
+
+| Nombre de Prop | Tipo                                         | Por Defecto   | Descripción |
+|-------------|----------------------------------------------|-----------|-------------|
+| `items`     | `Array<{id,title,content,colSpan?,rowSpan?,color?}>` | 5 demos por defecto | Elementos de la cuadrícula. |
+| `draggable` | `boolean`                                    | `true`    | Activa el arrastre si es `true`. |
+| `darkMode`  | `boolean`                                    | `false`   | Activa el estilo en modo oscuro si es `true`. |
+| `className` | `string`                                     | `""`      | Clases adicionales combinadas vía `cn()`. |
+| `style`     | `CSSProperties`                              | `-`       | Estilos en línea. |
+
+Responsivo: `grid-cols-1 sm:grid-cols-3`, `colSpan` con prefijo `sm:`, `auto-rows-[120px] sm:140px`.
+
+### Características
+
+- Reordenamiento con resorte con **Framer Motion** `layout`.
+- Acentos degradados vía prop `color` (`from-... to-...`).
+- Personalizable vía `className`/`style`.
+- Ubicación: `src/components/interactive/BentoGrid.jsx`.

@@ -1,0 +1,60 @@
+---
+title: BorderImage (Imagen con Borde Animado)
+description: Esta sección muestra una vista previa del componente BorderImage.
+---
+
+En esta guía presentamos el componente `BorderImage`, una imagen circular con borde degradado animado. Refactorizado para funcionar sin `next/image` — compatible con Vite, CRA y Next.js.
+
+## Vista Previa
+
+<BorderImagePreview />
+
+## Código
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { BorderImage } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <>
+      <BorderImage image="/img/cat.png" size={140} darkMode alt="Avatar" className="mx-auto" />
+      {/* Fallback placeholder cuando no se proporciona imagen */}
+      <BorderImage darkMode />
+    </>
+  );
+}
+```
+
+## Detalles del Componente
+
+El componente `BorderImage` consta de:
+- Una **imagen circular** con borde degradado y resplandor difuminado.
+- **Respaldo (fallback)** automático a `/img/image.jpg`, luego a CDN `placehold.co`, y finalmente a URI de datos inline.
+- Usa etiqueta nativa `img` — sin dependencia de `next/image`.
+
+## Propiedades
+
+| Nombre de Prop | Tipo              | Por Defecto      | Descripción |
+|-------------|-------------------|--------------------|-------------|
+| `image`     | `string \| null`  | `null`             | URL de la imagen. Recurre a `/img/image.jpg` + CDN si falla. |
+| `darkMode`  | `boolean`         | `false`            | Activa el estilo en modo oscuro si es `true`. |
+| `size`      | `number`          | `112`              | Diámetro en px (`w-28` = 112). Responsivo `min(size,30vw)`. |
+| `alt`       | `string`          | `"Animated Image"` | Texto alternativo para la imagen. |
+| `className` | `string`          | `""`               | Clases adicionales combinadas vía `cn()` (`tailwind-merge`). |
+| `style`     | `CSSProperties`   | `-`                | Estilos en línea. |
+
+Estas props permiten una personalización completa manteniendo el componente ligero.
+
+### Características
+
+- Funciona en **Vite/CRA/Next** — no requiere `next/image`.
+- Cadena de **respaldo** robusta para imágenes faltantes.
+- Estilizado con **Tailwind CSS** y resplandor con **Framer Motion**.
+- 100% personalizable vía `className`/`style` con `cn()` (`src/lib/utils.js`).
+- Usado internamente por `CardProfile` (`src/components/cards/card-profile.jsx`).
+
+Este componente añade un avatar animado y pulido sin configuración adicional.

@@ -1,0 +1,60 @@
+---
+title: CommandPalette (⌘K Fuzzy Palette)
+description: This section previews the CommandPalette component.
+---
+
+In this guide, we showcase the `CommandPalette` component, a `⌘K` palette with fuzzy search, keyboard nav and morph animation.
+
+## Preview
+
+<CommandPalettePreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { CommandPalette } from "@elizabthpazp/intera-ui";
+import { Search, Sparkles } from "lucide-react";
+
+export default function Home() {
+  const items = [
+    { id:"theme", label:"Toggle Theme", icon:<Sparkles size={16}/>, shortcut:"⌘T", onSelect:()=>setDark(!dark) },
+    { id:"sheet", label:"Open Sheet", icon:<Search size={16}/>, onSelect:()=>setOpen(true) },
+  ];
+
+  return <CommandPalette items={items} darkMode placeholder="Type a command..." />;
+  // Controlled:
+  // <CommandPalette open={open} onOpenChange={setOpen} items={items} />
+  // Atajo: Ctrl/Cmd+K y ESC ya vienen incluidos
+}
+```
+
+## Component Details
+
+The `CommandPalette` component consists of:
+- **Trigger button** (when uncontrolled) with `⌘K` hint.
+- **Modal** with `fixed inset-0` + `AnimatePresence` and search input.
+- **Fuzzy filter** on `label`/`id` and **keyboard nav** (`ArrowUp/Down`, `Enter`).
+
+## Props
+
+| Prop Name      | Type                                         | Default                | Description |
+|----------------|----------------------------------------------|------------------------|-------------|
+| `items`        | `Array<{id,label,icon?,shortcut?,onSelect}>` | `[]`                   | Commands list. |
+| `open`         | `boolean`                                    | `undefined`            | Controlled open state. |
+| `onOpenChange` | `(v)=>{}`                                    | `()=>{}`               | Called when open changes. |
+| `placeholder`  | `string`                                     | `"Type a command..."`  | Input placeholder. |
+| `darkMode`     | `boolean`                                    | `false`                | Enables dark mode styling if `true`. |
+| `className`    | `string`                                     | `""`                   | Additional classes merged via `cn()`. |
+| `style`        | `CSSProperties`                              | `-`                    | Inline styles. |
+
+Responsive: `max-w-lg w-full`, `hidden sm:flex` for shortcuts.
+
+### Features
+- Built-in **Ctrl/Cmd+K** and **ESC** handling.
+- Morph via **Framer Motion** `AnimatePresence`.
+- Customizable via `className`/`style` with `cn()` (`src/lib/utils.js`).
+- Location: `src/components/interactive/CommandPalette.jsx`.
