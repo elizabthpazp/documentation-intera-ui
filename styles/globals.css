@@ -1,5 +1,6 @@
 @import url("./syntax.css");
 @import url("./algolia.css");
+@import "ask-ai-badge/style.css";
 
 :root {
   font-variant-ligatures: none;

@@ -17,6 +17,10 @@ export const dictionaries = {
     footer: {
       builtBy: "Creado por",
       source: "El código fuente está disponible en",
+      askAiTitle: "¿No estás seguro si Intera UI es para ti?",
+      askAiPowered: "Desarrollado con",
+      askAiSubtitle: "insignia de IA lista para tu propio proyecto",
+      askAiDescription: "Intera UI es una librería de componentes de interfaz de usuario de código abierto, accesible y personalizable construida con React y Tailwind CSS.",
     },
     toc: {
       onThisPage: "En esta página",
@@ -54,6 +58,10 @@ export const dictionaries = {
     footer: {
       builtBy: "Build by",
       source: "The source code is available on",
+      askAiTitle: "Not sure if Intera UI is right for you?",
+      askAiPowered: "Powered by",
+      askAiSubtitle: "drop-in AI badge for your own project",
+      askAiDescription: "Intera UI is an open-source, accessible, and customizable UI component library built with React and Tailwind CSS.",
     },
     toc: {
       onThisPage: "On this page",
