@@ -53,9 +53,9 @@ export const NAVLINKS = [
 ];
 
 const algolia_props = {
-  appId: process.env.ALGOLIA_APP_ID!,
-  indexName: process.env.ALGOLIA_INDEX!,
-  apiKey: process.env.ALGOLIA_SEARCH_API_KEY!,
+  appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
+  indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX!,
+  apiKey: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY!,
 };
 
 export function Navbar() { 
