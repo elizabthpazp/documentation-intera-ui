@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/build-search-index.mjs && next build && node scripts/index-algolia.mjs",
+    "algolia:index": "node scripts/index-algolia.mjs",
+    "algolia:dry": "node scripts/index-algolia.mjs --dry-run",
+    "search:index": "node scripts/build-search-index.mjs",
     "start": "next start",
     "lint": "next lint"
   },

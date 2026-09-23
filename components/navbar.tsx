@@ -8,7 +8,7 @@ import Anchor from "./anchor";
 import { SheetLeftbar } from "./leftbar";
 import { page_routes } from "@/lib/routes-config";
 import { SheetClose } from "@/components/ui/sheet";
-import AlgoliaSearch from "./algolia-search"; 
+import LocalSearch from "./local-search"; 
 import { Logo } from "./logo";
 import { LanguageToggle } from "./language-toggle";
 import { useLanguage } from "@/components/contexts/language-provider";
@@ -52,12 +52,6 @@ export const NAVLINKS = [
   // },
 ];
 
-const algolia_props = {
-  appId: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
-  indexName: process.env.NEXT_PUBLIC_ALGOLIA_INDEX!,
-  apiKey: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_API_KEY!,
-};
-
 export function Navbar() { 
   return (
     <nav
@@ -77,10 +71,10 @@ export function Navbar() {
           </div>
         </div>
 
-        <div className="flex items-center sm:justify-normal justify-between sm:gap-3 ml-1 sm:w-fit w-[90%]">
-          <AlgoliaSearch {...algolia_props} />
-          <div className="flex items-center justify-between sm:gap-2">
-            <div className="flex ml-4 sm:ml-0 items-center gap-1">
+        <div className="flex flex-1 min-w-0 items-center justify-end gap-2 sm:gap-3 sm:flex-none ml-1">
+          <LocalSearch />
+          <div className="flex items-center shrink-0">
+            <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
               <Link
                 href="https://github.com/elizabthpazp/intera-ui"
                 target="_blank"
