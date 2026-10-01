@@ -1,0 +1,55 @@
+---
+title: NebulaDrift (Aurora Background)
+description: Fondo aurora que sigue al cursor. Signature visual de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `NebulaDrift` component, fondo aurora reactivo al cursor con rejilla radial.
+
+## Preview
+
+<NebulaDriftPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { NebulaDrift } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <NebulaDrift darkMode intensity={1.2} showGrid hint={null} minHeight={360}>
+      <div className="py-20 px-8 text-center">
+        <h3 className="text-4xl font-black tracking-tighter">Tu hero aquí</h3>
+      </div>
+    </NebulaDrift>
+  );
+}
+```
+
+## Component Details
+
+The `NebulaDrift` component consists of:
+- **Aurora animada** que sigue al cursor (pointer + touch).
+- **Rejilla** con máscara radial opcional.
+- **Contenido** renderizado encima de la aurora.
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `children` | `ReactNode` | `-` | Contenido encima de la aurora. |
+| `darkMode` | `boolean` | `false` | Enables dark mode styling if `true`. |
+| `intensity` | `number` | `1` | `0.5` sutil / `1.6` intenso. |
+| `showGrid` | `boolean` | `true` | Rejilla con máscara radial. |
+| `hint` | `string \| null` | `"● live aurora…"` | `null` lo oculta. |
+| `minHeight` | `number` | `280` | Altura mínima. |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- 100% customizable vía `className` + `style` (tu `className` gana con `tailwind-merge`).
+- Responsive mobile / tablet / desktop, sin `max-width` impuesto.
+- Location: `src/components/interactive/NebulaDrift.jsx`.

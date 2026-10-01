@@ -1,0 +1,49 @@
+---
+title: DropVault (File Uploader)
+description: Uploader drag & drop con progreso y previews. Useful de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `DropVault` component, zona drag & drop + click con validación y progreso por archivo.
+
+## Preview
+
+<DropVaultPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { DropVault } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <DropVault darkMode maxMb={8} maxFiles={8} onFilesChange={(files) => upload(files)} />
+  );
+}
+```
+
+## Component Details
+
+The `DropVault` component consists of:
+- **Drag & drop + click** para seleccionar.
+- **Validación** tipo / peso, progreso animado por archivo y preview de imágenes.
+- **Contador** listos / total.
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `darkMode` | `boolean` | `false` | Enables dark mode styling if `true`. |
+| `maxMb` | `number` | `8` | Peso máximo por archivo. |
+| `maxFiles` | `number` | `8` | Tope de cola. |
+| `accept` | `string[]` (MIME) | PNG/JPG/WEBP/PDF | `[]` = aceptar todo. |
+| `onFilesChange` | `(files) => void` | `()=>{}` | Items `{id, file, name, size, progress, status}`. |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- `status`: `uploading | done | error-type | error-size`.
+- Location: `src/components/interactive/DropVault.jsx`.

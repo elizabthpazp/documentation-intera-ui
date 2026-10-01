@@ -1,0 +1,63 @@
+---
+title: SmartTable (Admin Table)
+description: Tabla admin con búsqueda, filtros, orden, selección y CSV. Useful de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `SmartTable` component, tabla pro con todo incluido: buscador, filtros, sort, paginación y export CSV.
+
+## Preview
+
+<SmartTablePreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { SmartTable } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <SmartTable
+      darkMode
+      pageSize={5}
+      columns={[
+        { key: "name", label: "Cliente", sortable: true },
+        { key: "plan", label: "Plan", sortable: true },
+        { key: "status", label: "Estado", sortable: true },
+        { key: "mrr", label: "MRR", sortable: true },
+      ]}
+      data={[
+        { id: "1", name: "Acme", plan: "Scale", status: "active", mrr: 490 },
+      ]}
+      onSelectionChange={(ids) => console.log(ids)}
+    />
+  );
+}
+```
+
+## Component Details
+
+The `SmartTable` component consists of:
+- **Buscador live** + filtros por estado (auto).
+- **Orden asc / desc**, select múltiple y paginación con ventana deslizante.
+- **Export CSV real** y empty state con limpiar filtros.
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `columns` | `Array<{key, label, sortable?}>` | 4 demo | `key` debe existir en cada fila. |
+| `data` | `Array<{id, ...}>` | 8 filas demo | `id` único requerido. |
+| `darkMode` | `boolean` | `false` | Enables dark mode styling if `true`. |
+| `pageSize` | `number` | `5` | Filas por página. |
+| `onSelectionChange` | `(ids: string[]) => void` | `()=>{}` | Callback de selección. |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- `status` renderiza pill (`active/trial/past_due/canceled`); `mrr` formatea `$`.
+- Mobile: scroll-x con `min-w-[560px]`.
+- Location: `src/components/interactive/SmartTable.jsx`.

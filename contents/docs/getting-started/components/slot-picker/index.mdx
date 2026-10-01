@@ -1,0 +1,46 @@
+---
+title: SlotPicker (Booking)
+description: Reserva de citas con calendario y slots. Useful de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `SlotPicker` component, calendario navegable + slots horarios con confirmación.
+
+## Preview
+
+<SlotPickerPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { SlotPicker } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <SlotPicker darkMode onConfirm={({ date, slot }) => api.book(date, slot)} />
+  );
+}
+```
+
+## Component Details
+
+The `SlotPicker` component consists of:
+- **Mes navegable** + botón Hoy, días pasados deshabilitados.
+- **Slots `09:00–17:00`** (`12:00` ocupado demo).
+- **Confirmación** con estado reservado + "Cambiar".
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `darkMode` | `boolean` | `false` | Enables dark mode styling if `true`. |
+| `onConfirm` | `({date, slot}) => void` | `()=>{}` | `date: Date`, `slot: "09:00"…`. |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- `md:grid-cols-[1fr_240px]`, apila en mobile. Días `aspect-square` (~40px en 360px: táctil OK).
+- Location: `src/components/interactive/SlotPicker.jsx`.

@@ -1,0 +1,52 @@
+---
+title: PulseGrid (Reactive Grid)
+description: Rejilla reactiva + ripple. Signature visual de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `PulseGrid` component, rejilla de nodos que se encienden con el cursor y ripple al click.
+
+## Preview
+
+<PulseGridPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { PulseGrid } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <PulseGrid darkMode rows={8} cols={12} hint={null} minHeight={340}>
+      <div className="py-16 text-center"><h3>Tu contenido (clicable)</h3></div>
+    </PulseGrid>
+  );
+}
+```
+
+## Component Details
+
+The `PulseGrid` component consists of:
+- **Grid de nodos** (`rows × cols`) que reaccionan a proximidad.
+- **Ripple** al click.
+- **Children clicables** (sin `pointer-events-none`).
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `darkMode` | `boolean` | `false` | Enables dark mode styling if `true`. |
+| `rows` | `number` | `8` | Filas de nodos. |
+| `cols` | `number` | `12` | Columnas (total = rows×cols, no abuses: 200+ pesa). |
+| `children` | `ReactNode` | `-` | Recibe clicks. |
+| `hint` | `string \| null` | `"hover to light…"` | `null` lo oculta. |
+| `minHeight` | `number` | `320` | Altura mínima. |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- Recalcula posiciones en `resize`. En touch usa el dedo como cursor.
+- Location: `src/components/interactive/PulseGrid.jsx`.

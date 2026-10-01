@@ -1,0 +1,53 @@
+---
+title: PriceForge (Pricing Calc)
+description: Calculadora de pricing con seats y add-ons. Useful de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `PriceForge` component, pricing interactivo con slider, switch anual y desglose vivo.
+
+## Preview
+
+<PriceForgePreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { PriceForge } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <PriceForge
+      darkMode
+      basePerSeat={12}
+      summaryClassName="bg-[#0b0b12]"
+      onCheckout={({ seats, annual, addons, total }) => api.checkout(...)}
+    />
+  );
+}
+```
+
+## Component Details
+
+The `PriceForge` component consists of:
+- **Slider seats 1–200**, switch mensual / anual (−20%).
+- **3 add-ons** con precio real (SSO $49, Soporte $99, Backup $39).
+- **Desglose vivo** + CTA con total.
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `darkMode` | `boolean` | `false` | Enables dark mode styling if `true`. |
+| `basePerSeat` | `number` | `12` | $ por seat. |
+| `onCheckout` | `(calc) => void` | `()=>{}` | `{seats, annual, addons, total}`. |
+| `summaryClassName` | `string` | `""` | Override del panel total (en claro es negro por diseño). |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- `lg:grid-cols-[1fr_300px]`. Responsive y dark ready.
+- Location: `src/components/interactive/PriceForge.jsx`.

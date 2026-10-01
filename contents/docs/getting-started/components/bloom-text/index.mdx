@@ -1,0 +1,56 @@
+---
+title: BloomText (Word Bloom)
+description: Texto que florece por palabras. Signature visual de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `BloomText` component, entrada animada palabra por palabra con highlights.
+
+## Preview
+
+<BloomTextPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { BloomText } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <BloomText
+      darkMode
+      text="Interfaces que respiran y enamoran."
+      highlightWords={["respiran,"]}
+      textClassName="text-3xl sm:text-5xl"
+      showReplay
+    />
+  );
+}
+```
+
+## Component Details
+
+The `BloomText` component consists of:
+- **Split por espacios**, cada palabra anima blur → focus.
+- **Highlights** con match exacto.
+- **Replay** + palabras clicables (pop) y hovereables.
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `text` | `string` | demo | Se parte por espacios. |
+| `darkMode` | `boolean` | `false` | Enables dark mode styling if `true`. |
+| `highlightWords` | `string[]` | `["respiran,", "enamoran"]` | Match exacto con la palabra. |
+| `highlightClass` | `string` | gradiente violeta→cyan | Clase de las destacadas. |
+| `textClassName` | `string` | `"text-3xl sm:text-4xl"` | Tamaño del texto (sobreescribe). |
+| `showReplay` | `boolean` | `true` | Botón Replay + hint. |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- Click = `onClick` por palabra, funciona en touch.
+- Location: `src/components/interactive/BloomText.jsx`.

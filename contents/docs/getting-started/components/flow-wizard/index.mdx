@@ -1,0 +1,48 @@
+---
+title: FlowWizard (Steps Form)
+description: Onboarding / checkout por pasos con validación. Useful de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `FlowWizard` component, wizard de 3 pasos + success para signup / checkout.
+
+## Preview
+
+<FlowWizardPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { FlowWizard } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <div className="max-w-xl mx-auto">
+      <FlowWizard darkMode onComplete={(form) => api.signup(form)} />
+    </div>
+  );
+}
+```
+
+## Component Details
+
+The `FlowWizard` component consists of:
+- **Pasos**: Perfil (valida nombre + email) → Plan (Starter / Scale / Enterprise; Enterprise pide tarjeta) → Review + checkbox legal → success.
+- **Stepper clicable** hacia atrás. No avanza con errores (marca `touched`).
+- **Sin `max-width` impuesto** (`w-full`): el centrado lo pones tú.
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `darkMode` | `boolean` | `false` | Enables dark mode styling if `true`. |
+| `onComplete` | `(form) => void` | `()=>{}` | `form = {name, email, plan, card, agree}`. |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- `grid-cols-1 sm:grid-cols-3` en planes. 100% local.
+- Location: `src/components/interactive/FlowWizard.jsx`.

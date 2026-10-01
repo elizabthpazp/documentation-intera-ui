@@ -1,0 +1,51 @@
+---
+title: FluxBorder (Animated Border)
+description: Borde cónico animado para cards y CTAs. Signature visual de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `FluxBorder` component, anillo cónico rotando alrededor de tu contenido.
+
+## Preview
+
+<FluxBorderPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { FluxBorder } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <FluxBorder darkMode glow="violet" speed={4} radius="rounded-[2rem]">
+      <div className="px-10 py-8 text-center">Tu card / botón grande</div>
+    </FluxBorder>
+  );
+}
+```
+
+## Component Details
+
+The `FluxBorder` component consists of:
+- **Anillo cónico** animado (conic-gradient rotando).
+- **Fondo interno** que respeta `darkMode`.
+- **Aceleración en hover** (×0.45 del `speed`).
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `children` | `ReactNode` | `-` | Contenido interno. |
+| `darkMode` | `boolean` | `false` | Fondo interno claro / oscuro. |
+| `glow` | `"violet" \| "ember" \| "mint" \| "mono"` | `"violet"` | Paleta del anillo. |
+| `speed` | `number` | `4` | Segundos por vuelta (en hover acelera). |
+| `radius` | `string` | `"rounded-[2rem]"` | Radio externo e interno. |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- `className="rounded-none"` sobreescribe radios internos (va al root).
+- Location: `src/components/interactive/FluxBorder.jsx`.

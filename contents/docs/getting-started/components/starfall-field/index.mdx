@@ -1,0 +1,55 @@
+---
+title: StarfallField (Meteor Shower)
+description: Lluvia de meteoros con burst al click. Signature visual de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `StarfallField` component, lluvia de meteoros con burst al hacer click.
+
+## Preview
+
+<StarfallFieldPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { StarfallField } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <StarfallField darkMode density={16} speed={1.2} burstOnClick hint={null}>
+      <div className="py-20 text-center">
+        <h3 className="text-4xl font-black">Click = burst ✦</h3>
+      </div>
+    </StarfallField>
+  );
+}
+```
+
+## Component Details
+
+The `StarfallField` component consists of:
+- **Meteoros animados** con spawn continuo.
+- **Burst al click** (5 meteoros, ignora clicks en botones / links / inputs).
+- **Contenido** centrado encima del canvas.
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `children` | `ReactNode` | `-` | Contenido encima. |
+| `darkMode` | `boolean` | `false` | En claro el fondo es `#eef0ff` (usa texto oscuro). |
+| `density` | `number` | `14` | Más alto = más meteoros (`>18` duplica spawn). |
+| `speed` | `number` | `1` | Multiplicador de velocidad. |
+| `burstOnClick` | `boolean` | `true` | Click crea 5 meteoros. |
+| `hint` | `string \| null` | `"click anywhere…"` | `null` lo oculta. |
+| `minHeight` | `number` | `320` | Altura mínima. |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- Funciona con pointer / touch, no solo hover.
+- Location: `src/components/interactive/StarfallField.jsx`.

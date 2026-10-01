@@ -1,0 +1,57 @@
+---
+title: LoopCards (Infinite Marquee)
+description: Cinta infinita con controles. Signature visual de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `LoopCards` component, marquee infinito de cards con play / pause.
+
+## Preview
+
+<LoopCardsPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { LoopCards } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <LoopCards
+      darkMode
+      direction="right"
+      speed={32}
+      pauseOnHover
+      items={[
+        { id: "1", title: "Diseño vivo", content: "Micro-interacciones…" },
+        { id: "2", title: "Motion real", content: "Springs…" },
+      ]}
+    />
+  );
+}
+```
+
+## Component Details
+
+The `LoopCards` component consists of:
+- **Loop duplicado** para scroll sin cortes.
+- **Controles** Play / Pause manuales (funcionan en touch).
+- **Cards** `w-[min(280px,74vw)]` con `flex-wrap`: apto 360px.
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `items` | `Array<{id, title, content}>` | 5 demo | Se duplican para el loop. |
+| `darkMode` | `boolean` | `false` | Enables dark mode styling if `true`. |
+| `direction` | `"left" \| "right"` | `"right"` | Derecha = se mueve →. |
+| `speed` | `number` | `32` | Segundos por vuelta (menor = más rápido). UI: 22=3x, 32=2x, 48=1x. |
+| `pauseOnHover` | `boolean` | `true` | Pausa en hover + botón manual. |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- Location: `src/components/interactive/LoopCards.jsx`.

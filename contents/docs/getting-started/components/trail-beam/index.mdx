@@ -1,0 +1,66 @@
+---
+title: TrailBeam (Scroll Beam)
+description: Haz de scroll con orbe de progreso. Signature visual de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `TrailBeam` component, línea de progreso de scroll con orbe % y cards.
+
+## Preview
+
+<TrailBeamPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { TrailBeam } from "@elizabthpazp/intera-ui";
+
+// Modo steps (data):
+export function Steps() {
+  return (
+    <TrailBeam
+      darkMode
+      accent="from-violet-500 via-fuchsia-400 to-cyan-300"
+      steps={[
+        { title: "Descubre", content: "…" },
+        { title: "Explora", content: "…" },
+      ]}
+    />
+  );
+}
+
+// Modo children (contenido libre):
+export function Free() {
+  return (
+    <TrailBeam darkMode cardClassName="bg-transparent">
+      <div>Tu bloque 1</div>
+      <div>Tu bloque 2</div>
+    </TrailBeam>
+  );
+}
+```
+
+## Component Details
+
+The `TrailBeam` component consists of:
+- **Beam lateral** que crece con el scroll + orbe con %.
+- **Modo steps** (`steps` prop) o **modo libre** (`children` ignora `steps`).
+- **Cards** que se iluminan al entrar en viewport.
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `children` | `ReactNode` | `-` | Si hay, ignora `steps`. |
+| `steps` | `Array<{title, content}>` | 3 demo | Data del modo steps. |
+| `darkMode` | `boolean` | `false` | Enables dark mode styling if `true`. |
+| `accent` | `string` | gradiente violeta→cyan | Clases del beam. |
+| `cardClassName` | `string` | `""` | Extra para cada card. |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- Location: `src/components/interactive/TrailBeam.jsx`.

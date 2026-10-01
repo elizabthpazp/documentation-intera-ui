@@ -42,6 +42,19 @@ import KineticMorphTextPreview from "@/components/markdown/kinetic-morph-text";
 import LiquidProgressPreview from "@/components/markdown/liquid-progress";
 import OrbitalMenuPreview from "@/components/markdown/orbital-menu";
 import SpotlightGridPreview from "@/components/markdown/spotlight-grid";
+import NebulaDriftPreview from "@/components/markdown/nebula-drift";
+import StarfallFieldPreview from "@/components/markdown/starfall-field";
+import PulseGridPreview from "@/components/markdown/pulse-grid";
+import FluxBorderPreview from "@/components/markdown/flux-border";
+import LoopCardsPreview from "@/components/markdown/loop-cards";
+import BloomTextPreview from "@/components/markdown/bloom-text";
+import TrailBeamPreview from "@/components/markdown/trail-beam";
+import SmartTablePreview from "@/components/markdown/smart-table";
+import FlowWizardPreview from "@/components/markdown/flow-wizard";
+import DropVaultPreview from "@/components/markdown/drop-vault";
+import SlotPickerPreview from "@/components/markdown/slot-picker";
+import PriceForgePreview from "@/components/markdown/price-forge";
+import FlowBoardPreview from "@/components/markdown/flow-board";
 import { InstallCommand } from "@/components/install-command";
 import { Stepper, StepperItem } from "@/components/markdown/stepper";
 import Image from "@/components/markdown/image";
@@ -92,6 +105,19 @@ const components = {
   LiquidProgressPreview,
   OrbitalMenuPreview,
   SpotlightGridPreview,
+  NebulaDriftPreview,
+  StarfallFieldPreview,
+  PulseGridPreview,
+  FluxBorderPreview,
+  LoopCardsPreview,
+  BloomTextPreview,
+  TrailBeamPreview,
+  SmartTablePreview,
+  FlowWizardPreview,
+  DropVaultPreview,
+  SlotPickerPreview,
+  PriceForgePreview,
+  FlowBoardPreview,
   InstallCommand,
   Stepper,
   StepperItem,

@@ -1,0 +1,54 @@
+---
+title: FlowBoard (Kanban)
+description: Kanban drag & drop local. Useful de InteraUI v1.3.0.
+---
+
+In this guide, we showcase the `FlowBoard` component, kanban de 3 columnas con crear, mover y borrar.
+
+## Preview
+
+<FlowBoardPreview />
+
+## Code
+
+```javascript
+import "@elizabthpazp/intera-ui/dist/globals.css";
+```
+
+```javascript
+import { FlowBoard } from "@elizabthpazp/intera-ui";
+
+export default function Home() {
+  return (
+    <FlowBoard
+      darkMode
+      initial={[
+        { id: "t1", col: "todo", title: "Diseñar landing", tag: "Design" },
+        { id: "t2", col: "doing", title: "Copy hero", tag: "Copy" },
+      ]}
+      onChange={(tasks) => save(tasks)}
+    />
+  );
+}
+```
+
+## Component Details
+
+The `FlowBoard` component consists of:
+- **Crear con Enter**, drag nativo entre columnas (HTML5 DnD) y borrar (visible en touch).
+- **Conteos por columna** + `x/y completadas`.
+- **100% local**, sin backend.
+
+## Props
+
+| Prop Name | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `darkMode` | `boolean` | `false` | Enables dark mode styling if `true`. |
+| `initial` | `Array<{id, col, title, tag}>` | 4 demo | `col`: `"todo" \| "doing" \| "done"`. |
+| `onChange` | `(tasks) => void` | `()=>{}` | Tras crear / mover / borrar. |
+| `className` | `string` | `""` | Additional classes merged via `cn()`. |
+| `style` | `CSSProperties` | `-` | Inline styles. |
+
+### Features
+- ⚠️ El DnD HTML5 no funciona en mobile-touch: para mover en móvil usa los botones de tu app consumiendo `onChange`.
+- `md:grid-cols-3`. Location: `src/components/interactive/FlowBoard.jsx`.
